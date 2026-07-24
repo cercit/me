@@ -324,7 +324,7 @@ main {
 .section {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 80px 0;
+  padding: 55px 0;
 }
 
 .numbered-heading {
@@ -497,20 +497,19 @@ main {
 }
 .pic-facts ul { list-style: none; margin: 0; padding: 0; }
 .pic-facts li {
-  margin-bottom: 14px;
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 22px;
   color: var(--light-slate);
   font-size: var(--fz-sm);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 .pic-facts li:last-child { margin-bottom: 0; }
-.pic-facts li span {
-  display: block;
-  margin-bottom: 3px;
-  color: var(--slate);
-  font-family: var(--font-mono);
-  font-size: var(--fz-xxs);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.pic-facts li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--green);
 }
 
 /* The next 18 months */

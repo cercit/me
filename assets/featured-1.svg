@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" role="img" aria-label="Project screenshot placeholder">
+  <rect width="700" height="440" fill="#112240"/>
+  <rect x="0" y="0" width="700" height="46" fill="#0a192f"/>
+  <circle cx="26" cy="23" r="6" fill="#233554"/><circle cx="48" cy="23" r="6" fill="#233554"/><circle cx="70" cy="23" r="6" fill="#233554"/>
+  <rect x="40" y="90" width="300" height="26" rx="4" fill="#233554"/>
+  <rect x="40" y="134" width="220" height="16" rx="4" fill="#1c2f4d"/>
+  <rect x="40" y="200" width="180" height="120" rx="6" fill="#0a192f" stroke="#64ffda" stroke-opacity="0.35"/>
+  <rect x="240" y="200" width="180" height="120" rx="6" fill="#0a192f" stroke="#64ffda" stroke-opacity="0.35"/>
+  <rect x="440" y="200" width="180" height="120" rx="6" fill="#0a192f" stroke="#64ffda" stroke-opacity="0.35"/>
+  <polyline points="60,290 100,250 140,270 180,225" fill="none" stroke="#64ffda" stroke-width="3"/>
+  <rect x="260" y="300" width="140" height="10" rx="5" fill="#64ffda" fill-opacity="0.5"/>
+  <rect x="260" y="260" width="100" height="10" rx="5" fill="#233554"/>
+  <circle cx="530" cy="260" r="42" fill="none" stroke="#64ffda" stroke-width="3" stroke-dasharray="180 60"/>
+  <text x="350" y="405" text-anchor="middle" fill="#8892b0" font-family="monospace" font-size="15">preview placeholder — swap in a real screenshot</text>
+</svg>

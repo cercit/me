@@ -324,7 +324,7 @@ main {
 .section {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 80px 0;
 }
 
 .numbered-heading {
@@ -488,7 +488,7 @@ main {
   transform: translate(8px, 8px);
 }
 
-.pic-facts { margin-top: 30px; }
+.pic-facts { margin-top: 46px; }
 .facts-title {
   margin: 0 0 16px;
   color: var(--green);
@@ -514,7 +514,7 @@ main {
 }
 
 /* The next 18 months */
-.plan { margin-top: 70px; }
+.plan { margin-top: 60px; }
 .plan-overline {
   margin: 0 0 24px;
   color: var(--green);
@@ -638,7 +638,7 @@ main {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 .featured:last-child { margin-bottom: 0; }
 
@@ -732,7 +732,7 @@ main {
 
 /* ============ Other noteworthy ============ */
 .other-heading {
-  margin: 100px 0 40px;
+  margin: 80px 0 40px;
   color: var(--lightest-slate);
   font-size: clamp(24px, 5vw, 28px);
   font-weight: 600;
@@ -794,7 +794,7 @@ main {
 .project-card.is-placeholder { border: 1px dashed var(--lightest-navy); background: transparent; }
 
 /* ============ Contact ============ */
-.contact { max-width: 600px; margin: 0 auto; text-align: center; padding: 100px 0; }
+.contact { max-width: 600px; margin: 0 auto; text-align: center; padding: 80px 0; }
 .contact-overline { margin: 0 0 20px; color: var(--green); font-family: var(--font-mono); font-size: var(--fz-md); }
 .contact-title { margin: 0 0 20px; color: var(--lightest-slate); font-size: clamp(40px, 5vw, 60px); font-weight: 700; }
 .contact-text { margin: 0 auto; font-size: var(--fz-lg); line-height: 1.5; }

@@ -712,6 +712,9 @@ main {
   overflow: hidden;
 }
 .img-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: var(--border-radius);
   mix-blend-mode: multiply;
   filter: grayscale(100%) contrast(1) brightness(90%);

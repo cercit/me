@@ -10,11 +10,19 @@
     loader.classList.add('replay');
     void loader.offsetWidth;
     loader.classList.remove('replay');
-    window.setTimeout(hideLoader, 1900);
+    window.setTimeout(hideLoader, 1700);
   }
-  if (reduceMotion) { hideLoader(); } else { window.setTimeout(hideLoader, 1900); }
+  if (reduceMotion) {
+    hideLoader();
+    document.body.classList.add('loaded');
+  } else {
+    window.setTimeout(function () {
+      hideLoader();
+      document.body.classList.add('loaded');
+    }, 1700);
+  }
 
-  /* ---------- Logo click: replay loader + scroll to top ---------- */
+  /* ---------- Logo: replay loader + scroll to top ---------- */
   var logoBtn = document.getElementById('logoBtn');
   if (logoBtn) {
     logoBtn.addEventListener('click', function (e) {
@@ -24,16 +32,15 @@
     });
   }
 
-  /* ---------- Nav: scrolled state + hide on scroll down ---------- */
+  /* ---------- Nav state ---------- */
   var header = document.getElementById('header');
   var lastY = window.scrollY;
   var ticking = false;
   function onScroll() {
     var y = window.scrollY;
     if (header) {
-      header.classList.toggle('scrolled', y > 50);
-      if (y > 150 && y > lastY) { header.classList.add('nav-hidden'); }
-      else { header.classList.remove('nav-hidden'); }
+      header.classList.toggle('scrolled', y > 40);
+      header.classList.toggle('nav-hidden', y > 160 && y > lastY);
     }
     lastY = y;
     ticking = false;
@@ -42,7 +49,7 @@
     if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
   }, { passive: true });
 
-  /* ---------- Hamburger / mobile menu ---------- */
+  /* ---------- Mobile menu ---------- */
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
   function setMenu(open) {
@@ -64,19 +71,15 @@
     mobileMenu.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () { setMenu(false); });
     });
-    // Escape closes + returns focus to hamburger
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && hamburger.classList.contains('open')) {
         setMenu(false);
         hamburger.focus();
       }
     });
-    // Outside click closes
     document.addEventListener('click', function (e) {
       if (!hamburger.classList.contains('open')) return;
-      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        setMenu(false);
-      }
+      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) setMenu(false);
     });
   }
 
@@ -85,9 +88,9 @@
   if (tabs) {
     var btns = Array.prototype.slice.call(tabs.querySelectorAll('.tab-btn'));
     var highlight = document.getElementById('tabHighlight');
-    var isMobile = function () { return window.matchMedia('(max-width: 768px)').matches; };
+    var isMobile = function () { return window.matchMedia('(max-width: 860px)').matches; };
 
-    function moveHighlight(i) {
+    var moveHighlight = function (i) {
       if (!highlight || !btns[i]) return;
       var btn = btns[i];
       if (isMobile()) {
@@ -99,23 +102,22 @@
         highlight.style.height = btn.offsetHeight + 'px';
         highlight.style.width = '2px';
       }
-    }
-    function activate(i, focusTab) {
+    };
+    var activate = function (i, focusTab) {
       btns.forEach(function (b, idx) {
         var on = idx === i;
         b.classList.toggle('is-active', on);
         b.setAttribute('aria-selected', String(on));
         b.setAttribute('tabindex', on ? '0' : '-1');
       });
-      var panels = tabs.querySelectorAll('.tab-panel');
-      panels.forEach(function (p) {
+      tabs.querySelectorAll('.tab-panel').forEach(function (p) {
         var on = p.dataset.panel === String(i);
         p.classList.toggle('is-active', on);
         if (on) { p.removeAttribute('hidden'); } else { p.setAttribute('hidden', ''); }
       });
       moveHighlight(i);
       if (focusTab && btns[i]) btns[i].focus();
-    }
+    };
     btns.forEach(function (btn) {
       btn.addEventListener('click', function () { activate(parseInt(btn.dataset.tab, 10), false); });
       btn.addEventListener('keydown', function (e) {
@@ -137,36 +139,26 @@
 
   /* ---------- Scroll reveal ---------- */
   if (!reduceMotion && 'IntersectionObserver' in window) {
-    var revealEls = document.querySelectorAll('.section, .featured, .project-card, .plan-item');
-    revealEls.forEach(function (el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    var revealEls = document.querySelectorAll(
+      '.section-heading, .about-grid, .plan, .tabs, .featured, .work-bottom, .contact > *, .route-stop'
+    );
+    revealEls.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', (i % 6) * 60 + 'ms');
     });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          // clear inline transform so CSS :hover rules apply again
-          entry.target.style.transform = '';
-          // drop the reveal transition so hover lifts stay snappy
-          window.setTimeout(function (el) { return function () { el.style.transition = ''; }; }(entry.target), 650);
+          entry.target.classList.add('is-visible');
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(function (el) { io.observe(el); });
 
-    // Failsafe: if the observer never fires (edge cases / non-compositing tabs),
-    // force-reveal anything still hidden so content can never get stuck invisible.
+    // Failsafe: never leave content invisible if the observer misfires
     window.setTimeout(function () {
-      revealEls.forEach(function (el) {
-        if (el.style.opacity === '0') {
-          el.style.opacity = '1';
-          el.style.transform = '';
-          el.style.transition = '';
-        }
-      });
-    }, 2500);
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }, 2600);
   }
 })();

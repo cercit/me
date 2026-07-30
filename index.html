@@ -15,6 +15,7 @@
 <body>
 
 <a href="#main" class="skip-link">Skip to content</a>
+<div id="navSentinel" aria-hidden="true"></div>
 
 <!-- Loader -->
 <div class="loader" id="loader" aria-hidden="true">
@@ -38,6 +39,7 @@
         <li><a href="#about">Journey</a></li>
         <li><a href="#experience">Career</a></li>
         <li><a href="#work">Work</a></li>
+        <li><a href="#coins">Coins</a></li>
         <li><a href="#contact">Contact</a></li>
       </ol>
       <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
@@ -55,6 +57,7 @@
     <li><a href="#about">Journey</a></li>
     <li><a href="#experience">Career</a></li>
     <li><a href="#work">Work</a></li>
+    <li><a href="#coins">Coins</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
   <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
@@ -72,13 +75,6 @@
         <a class="btn-primary" href="#work">See my work</a>
         <a class="btn-outline" href="mailto:samsm@outlook.in">Get in touch</a>
       </div>
-    </div>
-    <div class="hero-identity">
-      <div class="coin-emblem">
-        <span class="coin-number">527</span>
-        <span class="coin-word">coins</span>
-      </div>
-      <span class="coin-handle">Numismatist &middot; dhuryodhana</span>
     </div>
   </section>
 
@@ -133,6 +129,7 @@
             <li>Deputy Manager at Sundaram Finance</li>
             <li>Studying PM with Applied AI at IIT Roorkee</li>
             <li>Numismatist curating a historical collection of domestic and international coins</li>
+            <li>Hobby photographer, shooting on <a href="https://www.instagram.com/dhuryodhana" target="_blank" rel="noopener">Instagram</a></li>
           </ul>
         </div>
       </div>
@@ -274,7 +271,7 @@
 
     </div>
 
-    <!-- Other projects + Coin atlas -->
+    <!-- Other projects -->
     <div class="work-bottom">
       <div class="other-projects">
         <h3 class="subsection-heading">Other noteworthy projects</h3>
@@ -305,7 +302,7 @@
               <span class="ext"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </div>
             <h4>Numismatic Tooling</h4>
-            <p>Sticker-sheet and binder layout generators for a 500-plus coin world collection, built off Numista export data.</p>
+            <p>Sticker-sheet and binder layout generators for a 743-coin world collection, built off Numista export data.</p>
             <ul class="card-tech"><li>Python</li><li>Numista</li></ul>
           </a></li>
 
@@ -339,29 +336,72 @@
         </ul>
       </div>
 
-      <div class="coin-atlas">
-        <h3 class="subsection-heading">Coin atlas</h3>
-        <div class="atlas-card">
-          <div class="atlas-emblem">
-            <span class="atlas-count">527</span>
-            <span class="atlas-label">coins from 40+ countries</span>
+    </div>
+  </section>
+
+  <!-- Coins atlas -->
+  <section class="section coins" id="coins">
+    <h2 class="section-heading">Coins atlas</h2>
+    <p class="coins-intro">Every coin is a decision frozen in metal. Pick a flag to see what the collection holds from that country.</p>
+
+    <div class="atlas">
+      <div class="atlas-panel" id="atlasPanel" aria-live="polite">
+        <div class="panel-default" id="panelDefault">
+          <div class="panel-totals">
+            <div class="total">
+              <span class="total-num">743</span>
+              <span class="total-label">coins</span>
+            </div>
+            <div class="total">
+              <span class="total-num">102</span>
+              <span class="total-label">countries</span>
+            </div>
           </div>
-          <div class="atlas-grid">
-            <span class="atlas-coin highlight">IN</span>
-            <span class="atlas-coin">US</span>
-            <span class="atlas-coin">UK</span>
-            <span class="atlas-coin">DE</span>
-            <span class="atlas-coin">JP</span>
-            <span class="atlas-coin">FR</span>
-            <span class="atlas-coin">AU</span>
-            <span class="atlas-coin">BR</span>
-            <span class="atlas-coin">CA</span>
-            <span class="atlas-coin">NZ</span>
-            <span class="atlas-coin">ZA</span>
-            <span class="atlas-coin more">+29</span>
-          </div>
-          <a class="atlas-link" href="https://en.numista.com/collectionneur/dhuryodhana/" target="_blank" rel="noopener">Explore on Numista &rarr;</a>
+          <p class="panel-hint">The sixteen countries listed here account for 537 of the 743 coins.</p>
         </div>
+
+        <div class="panel-country" id="panelCountry" hidden>
+          <img class="panel-coin" id="panelCoin" src="" alt="" width="200" height="200">
+          <h3 class="panel-name" id="panelName"></h3>
+          <div class="panel-stats">
+            <div class="pstat">
+              <span class="pstat-num" id="panelCount"></span>
+              <span class="pstat-label">coins held</span>
+            </div>
+            <div class="pstat">
+              <span class="pstat-num" id="panelSpan"></span>
+              <span class="pstat-label">year span</span>
+            </div>
+          </div>
+          <div class="panel-bar"><span class="panel-bar-fill" id="panelBar"></span></div>
+          <p class="panel-share" id="panelShare"></p>
+          <div class="panel-motif">
+            <span class="motif-label">Recurring motif</span>
+            <span class="motif-value" id="panelMotif"></span>
+          </div>
+        </div>
+
+        <a class="atlas-link" href="https://en.numista.com/collectionneur/dhuryodhana/" target="_blank" rel="noopener">Explore the full collection on Numista</a>
+        <p class="atlas-credit">Coin images from the <a href="https://en.numista.com/" target="_blank" rel="noopener">Numista</a> catalogue.</p>
+      </div>
+
+      <div class="atlas-flags" id="atlasFlags" role="group" aria-label="Top sixteen countries by number of coins held">
+        <button type="button" class="flag-tile" data-code="gb" data-motif="Elizabeth II, on 110 of the 118" data-name="United Kingdom" data-count="118" data-from="1865" data-to="2021"><img src="https://flagcdn.com/w160/gb.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">United Kingdom</span><span class="flag-count">118 coins</span></button>
+        <button type="button" class="flag-tile" data-code="in" data-motif="The Ashoka Lion Capital" data-name="India" data-count="110" data-from="985" data-to="2026"><img src="https://flagcdn.com/w160/in.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">India</span><span class="flag-count">110 coins</span></button>
+        <button type="button" class="flag-tile" data-code="us" data-motif="Presidential portraits and state quarters" data-name="United States" data-count="81" data-from="1971" data-to="2024"><img src="https://flagcdn.com/w160/us.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">United States</span><span class="flag-count">81 coins</span></button>
+        <button type="button" class="flag-tile" data-code="cn" data-motif="National emblem, floral reverses" data-name="China" data-count="27" data-from="1795" data-to="2026"><img src="https://flagcdn.com/w160/cn.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">China</span><span class="flag-count">27 coins</span></button>
+        <button type="button" class="flag-tile" data-code="de" data-motif="The federal eagle and the euro map" data-name="Germany" data-count="26" data-from="1875" data-to="2022"><img src="https://flagcdn.com/w160/de.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Germany</span><span class="flag-count">26 coins</span></button>
+        <button type="button" class="flag-tile" data-code="ch" data-motif="Helvetia standing" data-name="Switzerland" data-count="23" data-from="1958" data-to="2009"><img src="https://flagcdn.com/w160/ch.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Switzerland</span><span class="flag-count">23 coins</span></button>
+        <button type="button" class="flag-tile" data-code="pl" data-motif="The white eagle of Poland" data-name="Poland" data-count="22" data-from="1976" data-to="2024"><img src="https://flagcdn.com/w160/pl.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Poland</span><span class="flag-count">22 coins</span></button>
+        <button type="button" class="flag-tile" data-code="fi" data-motif="The heraldic Finnish lion" data-name="Finland" data-count="21" data-from="1940" data-to="2005"><img src="https://flagcdn.com/w160/fi.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Finland</span><span class="flag-count">21 coins</span></button>
+        <button type="button" class="flag-tile" data-code="fr" data-motif="Marianne and the Sower" data-name="France" data-count="20" data-from="1951" data-to="2002"><img src="https://flagcdn.com/w160/fr.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">France</span><span class="flag-count">20 coins</span></button>
+        <button type="button" class="flag-tile" data-code="pk" data-motif="Crescent and star" data-name="Pakistan" data-count="14" data-from="1951" data-to="2023"><img src="https://flagcdn.com/w160/pk.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Pakistan</span><span class="flag-count">14 coins</span></button>
+        <button type="button" class="flag-tile" data-code="ru" data-motif="The double-headed eagle" data-name="Russia" data-count="14" data-from="1957" data-to="2020"><img src="https://flagcdn.com/w160/ru.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Russia</span><span class="flag-count">14 coins</span></button>
+        <button type="button" class="flag-tile" data-code="es" data-motif="Juan Carlos I" data-name="Spain" data-count="14" data-from="1967" data-to="2011"><img src="https://flagcdn.com/w160/es.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Spain</span><span class="flag-count">14 coins</span></button>
+        <button type="button" class="flag-tile" data-code="no" data-motif="Olav V, then Harald V" data-name="Norway" data-count="13" data-from="1969" data-to="2001"><img src="https://flagcdn.com/w160/no.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Norway</span><span class="flag-count">13 coins</span></button>
+        <button type="button" class="flag-tile" data-code="au" data-motif="Elizabeth II, on all twelve" data-name="Australia" data-count="12" data-from="1989" data-to="2021"><img src="https://flagcdn.com/w160/au.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Australia</span><span class="flag-count">12 coins</span></button>
+        <button type="button" class="flag-tile" data-code="be" data-motif="Baudouin I" data-name="Belgium" data-count="11" data-from="1928" data-to="2000"><img src="https://flagcdn.com/w160/be.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Belgium</span><span class="flag-count">11 coins</span></button>
+        <button type="button" class="flag-tile" data-code="np" data-motif="The Shah kings of Nepal" data-name="Nepal" data-count="11" data-from="1902" data-to="2009"><img src="https://flagcdn.com/w160/np.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Nepal</span><span class="flag-count">11 coins</span></button>
       </div>
     </div>
   </section>
@@ -372,6 +412,26 @@
     <h2 class="contact-title">Get in touch</h2>
     <p class="contact-text">Twelve years of NBFC operations and automotive data, pointed now at product. If you're working on financial-services product, automotive data, or just want to talk about any of this, my inbox is open.</p>
     <a class="btn-outline contact-btn" href="mailto:samsm@outlook.in">Get in touch</a>
+  </section>
+
+  <!-- Public stats -->
+  <section class="stats" id="stats" aria-label="Live site statistics">
+    <p class="stats-lead">This site tracks itself in the open. Numbers update live.</p>
+    <div class="stats-row">
+      <div class="stat-cell">
+        <span class="stat-value" id="statViews">--</span>
+        <span class="stat-name">page views</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value" id="statResume">--</span>
+        <span class="stat-name">resume opens</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-value" id="statContact">--</span>
+        <span class="stat-name">contact clicks</span>
+      </div>
+    </div>
+    <p class="stats-note">Counted anonymously with no cookies and no personal data. One view per browser session.</p>
   </section>
 
   <!-- Footer -->

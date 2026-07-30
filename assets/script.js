@@ -32,22 +32,14 @@
     });
   }
 
-  /* ---------- Nav state ---------- */
+  /* ---------- Nav state: always visible, condenses once scrolled ---------- */
   var header = document.getElementById('header');
-  var lastY = window.scrollY;
-  var ticking = false;
-  function onScroll() {
-    var y = window.scrollY;
-    if (header) {
-      header.classList.toggle('scrolled', y > 40);
-      header.classList.toggle('nav-hidden', y > 160 && y > lastY);
-    }
-    lastY = y;
-    ticking = false;
+  var sentinel = document.getElementById('navSentinel');
+  if (header && sentinel && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      header.classList.toggle('scrolled', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(sentinel);
   }
-  window.addEventListener('scroll', function () {
-    if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
-  }, { passive: true });
 
   /* ---------- Mobile menu ---------- */
   var hamburger = document.getElementById('hamburger');
@@ -134,6 +126,117 @@
     window.addEventListener('resize', function () {
       var active = tabs.querySelector('.tab-btn.is-active');
       if (active) moveHighlight(parseInt(active.dataset.tab, 10));
+    });
+  }
+
+  /* ---------- Coins atlas ---------- */
+  var atlasFlags = document.getElementById('atlasFlags');
+  if (atlasFlags) {
+    var TOTAL_COINS = 743;
+    var MAX_COUNT = 118; // United Kingdom, the largest single-country holding
+    var tiles = Array.prototype.slice.call(atlasFlags.querySelectorAll('.flag-tile'));
+    var panelDefault = document.getElementById('panelDefault');
+    var panelCountry = document.getElementById('panelCountry');
+    var panelCoin = document.getElementById('panelCoin');
+    var panelName = document.getElementById('panelName');
+    var panelCount = document.getElementById('panelCount');
+    var panelSpan = document.getElementById('panelSpan');
+    var panelBar = document.getElementById('panelBar');
+    var panelShare = document.getElementById('panelShare');
+    var panelMotif = document.getElementById('panelMotif');
+
+    tiles.forEach(function (tile) {
+      var d = tile.dataset;
+      tile.setAttribute('aria-pressed', 'false');
+      tile.setAttribute('aria-label', d.name + ', ' + d.count + ' coins, ' + d.from + ' to ' + d.to);
+
+      tile.addEventListener('click', function () {
+        var already = tile.classList.contains('is-selected');
+        tiles.forEach(function (t) {
+          t.classList.remove('is-selected');
+          t.setAttribute('aria-pressed', 'false');
+        });
+
+        if (already) {
+          panelCountry.hidden = true;
+          panelDefault.hidden = false;
+          return;
+        }
+
+        tile.classList.add('is-selected');
+        tile.setAttribute('aria-pressed', 'true');
+
+        var count = parseInt(d.count, 10);
+        var share = (count / TOTAL_COINS) * 100;
+
+        panelCoin.src = 'assets/coins/' + d.code + '.png';
+        panelCoin.alt = 'Reverse of a coin from ' + d.name + ': ' + (d.motif || '');
+        panelName.textContent = d.name;
+        panelCount.textContent = count;
+        panelSpan.textContent = d.from + ' to ' + d.to;
+        panelShare.textContent = share.toFixed(1) + '% of the collection';
+        panelMotif.textContent = d.motif || '';
+
+        panelDefault.hidden = true;
+        panelCountry.hidden = false;
+        panelBar.style.width = Math.round((count / MAX_COUNT) * 100) + '%';
+      });
+    });
+  }
+
+  /* ---------- Public stats ---------- */
+  var statsEl = document.getElementById('stats');
+  if (statsEl && 'fetch' in window) {
+    var NS = 'cercit-me-live';
+    // Reads need the trailing slash: without it the API 301s, and a CORS
+    // request that redirects is rejected by the browser.
+    var api = function (key, bump) {
+      var url = 'https://api.counterapi.dev/v1/' + NS + '/' + key + (bump ? '/up' : '/');
+      return fetch(url).then(function (r) {
+        // The API answers "record not found" with 400 (not 404) until a
+        // counter has been incremented at least once. That is a zero, not a failure.
+        if (r.status === 400 || r.status === 404) return 0;
+        if (!r.ok) throw new Error('bad status');
+        return r.json().then(function (j) {
+          return typeof j.count === 'number' ? j.count : 0;
+        });
+      });
+    };
+    var paint = function (id, target) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (reduceMotion) { el.textContent = target.toLocaleString(); return; }
+      var start = null;
+      var step = function (ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / 900, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString();
+        if (p < 1) window.requestAnimationFrame(step);
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    // One page view per browser session, so a refresh loop cannot inflate it.
+    var fresh = !sessionStorage.getItem('cercit-seen');
+    if (fresh) sessionStorage.setItem('cercit-seen', '1');
+
+    Promise.all([api('views', fresh), api('resume', false), api('contact', false)])
+      .then(function (n) {
+        paint('statViews', n[0]);
+        paint('statResume', n[1]);
+        paint('statContact', n[2]);
+      })
+      .catch(function () {
+        // Counter service unreachable: hide the section rather than show
+        // placeholder dashes that read as a broken page.
+        statsEl.hidden = true;
+      });
+
+    document.querySelectorAll('a[href$="resume.pdf"]').forEach(function (a) {
+      a.addEventListener('click', function () { api('resume', true).catch(function () {}); });
+    });
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+      a.addEventListener('click', function () { api('contact', true).catch(function () {}); });
     });
   }
 

@@ -129,7 +129,7 @@ button:focus-visible,
   height: var(--nav-h-scrolled);
   border-bottom-color: var(--line);
 }
-.header.nav-hidden { transform: translateY(-100%); }
+#navSentinel { position: absolute; top: 0; height: 1px; width: 1px; }
 
 .nav {
   display: flex;
@@ -280,13 +280,13 @@ main {
 
 /* ============ Hero ============ */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 56px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 100dvh;
   padding: calc(var(--nav-h) + 24px) 0 72px;
 }
+.hero-content { max-width: 780px; }
 
 .hero-name {
   margin: 0 0 6px;
@@ -331,44 +331,6 @@ main {
 .btn-outline:active { transform: scale(0.98); }
 
 /* Coin emblem */
-.hero-identity {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-.coin-emblem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 132px;
-  height: 132px;
-  border-radius: 50%;
-  border: 2px solid var(--amber-line);
-  background: radial-gradient(circle at 34% 32%, rgba(245, 158, 11, 0.14), transparent 62%);
-  transition: var(--t);
-}
-.coin-emblem:hover { border-color: var(--amber); transform: translateY(-3px); }
-.coin-number {
-  color: var(--amber);
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.coin-word {
-  margin-top: 3px;
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-.coin-handle {
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-
 /* ============ Route bar ============ */
 .route-bar {
   position: relative;
@@ -713,18 +675,12 @@ main {
 .featured-links a { color: var(--text-dim); padding: 4px; }
 .featured-links a:hover { color: var(--amber); transform: translateY(-2px); }
 
-/* Work bottom: projects + atlas */
-.work-bottom {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 40px;
-  margin-top: 72px;
-  align-items: start;
-}
+/* Work bottom: other projects */
+.work-bottom { margin-top: 72px; }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 14px;
   margin: 0;
   padding: 0;
@@ -778,15 +734,33 @@ main {
 .card-tech li { color: var(--text-faint); font-family: var(--font-mono); font-size: 11px; }
 .project-card.is-placeholder { border-style: dashed; background: transparent; }
 
-/* Coin atlas */
-.atlas-card {
-  padding: 24px;
+/* ============ Coins atlas ============ */
+.coins-intro {
+  max-width: 60ch;
+  margin: -18px 0 32px;
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.atlas {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* Detail panel */
+.atlas-panel {
+  align-self: start;
+  padding: 26px;
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
 }
-.atlas-emblem { text-align: center; margin-bottom: 20px; }
-.atlas-count {
+
+.panel-totals { display: flex; gap: 28px; }
+.total-num {
   display: block;
   color: var(--amber);
   font-size: 34px;
@@ -794,36 +768,168 @@ main {
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
-.atlas-label { display: block; margin-top: 6px; color: var(--text-faint); font-family: var(--font-mono); font-size: 11px; }
-.atlas-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-.atlas-coin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px solid var(--amber-line);
-  background: rgba(245, 158, 11, 0.04);
-  color: var(--text-dim);
+.total-label {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-faint);
   font-family: var(--font-mono);
   font-size: 11px;
-  transition: var(--t);
 }
-.atlas-coin:hover { border-color: var(--amber); background: var(--amber-soft); color: var(--amber); transform: translateY(-2px); }
-.atlas-coin.highlight { border-color: var(--amber); background: var(--amber-soft); color: var(--amber); }
-.atlas-coin.more { font-size: 10px; color: var(--text-faint); }
-.atlas-link {
+.panel-hint {
+  margin: 18px 0 0;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.panel-coin {
   display: block;
-  margin-top: 18px;
-  text-align: center;
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 4px;
+  object-fit: contain;
+  /* The PNGs are keyed to transparency, so the coin sits straight on the
+     panel with no plate behind it. */
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+}
+.panel-name {
+  margin: 14px 0 18px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.panel-stats { display: flex; gap: 28px; }
+.pstat-num {
+  display: block;
+  color: var(--amber);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.pstat-label {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.panel-bar {
+  display: block;
+  height: 4px;
+  margin-top: 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+.panel-bar-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--amber);
+  transition: width 0.45s var(--ease, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.panel-share {
+  margin: 10px 0 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.panel-motif {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.motif-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.motif-value {
+  display: block;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.atlas-link {
+  display: inline-block;
+  margin-top: 22px;
   font-family: var(--font-mono);
   font-size: 12px;
 }
 .atlas-link:hover { color: var(--amber-bright); }
+.atlas-credit {
+  margin: 10px 0 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+/* Flag grid */
+/* Four columns of four, sized so the grid fills the same height as the
+   detail panel beside it rather than leaving dead space below. */
+.atlas-flags {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 10px;
+}
+.flag-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 124px;
+  padding: 14px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--t);
+}
+.flag-tile img {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  filter: saturate(0.7) brightness(0.9);
+  transition: var(--t);
+}
+.flag-name {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.flag-count {
+  margin-top: -4px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.flag-tile:hover {
+  border-color: var(--amber-line);
+  transform: translateY(-4px);
+}
+.flag-tile:hover img { filter: none; }
+.flag-tile.is-selected {
+  border-color: var(--amber);
+  background: var(--amber-soft);
+}
+.flag-tile.is-selected img { filter: none; }
+.flag-tile.is-selected .flag-count { color: var(--amber); }
 
 /* ============ Contact ============ */
 .contact { max-width: 620px; margin: 0 auto; text-align: center; }
@@ -852,6 +958,46 @@ main {
 .social-row a:hover { color: var(--amber); transform: translateY(-3px); }
 .site-footer p { margin: 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 12px; }
 
+/* ============ Public stats ============ */
+.stats {
+  padding: 56px 0 8px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.stats-lead {
+  margin: 0 0 28px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.stat-value {
+  display: block;
+  color: var(--amber);
+  font-size: clamp(28px, 5vw, 38px);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-name {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.stats-note {
+  margin: 26px 0 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
 /* ============ Motion ============ */
 .js .reveal {
   opacity: 0;
@@ -864,13 +1010,11 @@ main {
               transform 0.6s var(--ease) var(--reveal-delay, 0ms);
 }
 
-.js .hero-content > *,
-.js .hero-identity {
+.js .hero-content > * {
   opacity: 0;
   transform: translateY(20px);
 }
-body.loaded .hero-content > *,
-body.loaded .hero-identity {
+body.loaded .hero-content > * {
   opacity: 1;
   transform: none;
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
@@ -879,12 +1023,11 @@ body.loaded .hero-name { transition-delay: 0.05s; }
 body.loaded .hero-subtitle { transition-delay: 0.15s; }
 body.loaded .hero-text { transition-delay: 0.25s; }
 body.loaded .hero-buttons { transition-delay: 0.35s; }
-body.loaded .hero-identity { transition-delay: 0.45s; }
 
 /* ============ Responsive ============ */
 @media (max-width: 1080px) {
-  .work-bottom { grid-template-columns: 1fr; }
-  .atlas-card { max-width: 420px; }
+  .atlas { grid-template-columns: 260px 1fr; gap: 24px; }
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
@@ -894,10 +1037,10 @@ body.loaded .hero-identity { transition-delay: 0.45s; }
   .hamburger { display: flex; }
 
   .section { padding: 64px 0; }
-  .hero { grid-template-columns: 1fr; gap: 36px; padding-top: calc(var(--nav-h) + 16px); }
-  .hero-identity { flex-direction: row; align-items: center; gap: 16px; justify-content: flex-start; }
-  .coin-emblem { width: 96px; height: 96px; }
-  .coin-number { font-size: 24px; }
+  .hero { padding-top: calc(var(--nav-h) + 16px); }
+
+  .atlas { grid-template-columns: 1fr; gap: 20px; }
+  .atlas-panel { position: static; }
 
   .route-bar { grid-template-columns: repeat(5, 1fr); padding: 18px 0; }
   .route-track { top: 29px; }
@@ -926,7 +1069,8 @@ body.loaded .hero-identity { transition-delay: 0.45s; }
   .section-heading::after { display: none; }
   .route-bar { grid-template-columns: repeat(3, 1fr); row-gap: 18px; }
   .route-track { display: none; }
-  .atlas-grid { grid-template-columns: repeat(6, 1fr); }
+  .atlas-flags { grid-template-columns: repeat(2, 1fr); }
+  .panel-totals, .panel-stats { gap: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

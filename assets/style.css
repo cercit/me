@@ -421,6 +421,14 @@ main {
   letter-spacing: -0.01em;
 }
 
+.section-lead {
+  max-width: 60ch;
+  margin: -24px 0 32px;
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 /* ============ Hero ============ */
 .hero {
   display: flex;
@@ -452,7 +460,18 @@ main {
   font-size: 16px;
   line-height: 1.7;
 }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.hero-badge {
+  padding: 5px 12px;
+  color: var(--text-dim);
+  background: var(--tint);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
 .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-microcopy { margin: 14px 0 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 12px; }
 
 .btn-primary,
 .btn-outline {
@@ -529,6 +548,7 @@ main {
 .about-text a { border-bottom: 1px solid var(--amber-line); }
 .about-text a:hover { border-bottom-color: var(--amber); }
 .about-text em { color: var(--text); font-style: italic; }
+.about-text .lead { color: var(--text); font-weight: 600; }
 
 .about-pic { max-width: 300px; }
 
@@ -602,6 +622,7 @@ main {
   font-family: var(--font-mono);
   font-size: 14px;
 }
+.plan-intro { max-width: 60ch; margin: 0 0 24px; color: var(--text-dim); font-size: 14px; line-height: 1.65; }
 .plan-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -866,6 +887,7 @@ main {
   vertical-align: middle;
 }
 .project-card > p { margin: 0 0 auto; color: var(--text-dim); font-size: 13px; line-height: 1.6; }
+.project-card > p.card-note { margin: 10px 0 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 11px; }
 .card-tech {
   display: flex;
   flex-wrap: wrap;
@@ -1020,6 +1042,15 @@ main {
   font-size: 10px;
 }
 
+.coins-bridge {
+  margin: 36px 0 0;
+  color: var(--text-dim);
+  font-size: 15px;
+  text-align: center;
+}
+.coins-bridge a { color: var(--amber-text); border-bottom: 1px solid var(--amber-line); }
+.coins-bridge a:hover { border-bottom-color: var(--amber); }
+
 /* Flag grid */
 /* Four columns of four, sized so the grid fills the same height as the
    detail panel beside it rather than leaving dead space below. */
@@ -1091,7 +1122,9 @@ main {
   letter-spacing: -0.02em;
 }
 .contact-text { margin: 0 0 36px; font-size: 16px; line-height: 1.7; }
+.contact-channels { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 0 0 20px; }
 .contact-btn { padding: 16px 32px; font-size: 15px; }
+.contact-meta { margin: 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 12px; }
 
 /* ============ Footer ============ */
 .site-footer { padding: 40px 0 44px; text-align: center; border-top: 1px solid var(--line); }
@@ -1170,8 +1203,10 @@ body.loaded .hero-content > * {
 }
 body.loaded .hero-name { transition-delay: 0.05s; }
 body.loaded .hero-subtitle { transition-delay: 0.15s; }
+body.loaded .hero-badges { transition-delay: 0.2s; }
 body.loaded .hero-text { transition-delay: 0.25s; }
 body.loaded .hero-buttons { transition-delay: 0.35s; }
+body.loaded .hero-microcopy { transition-delay: 0.45s; }
 
 /* ============ Responsive ============ */
 @media (max-width: 1080px) {

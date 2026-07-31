@@ -161,61 +161,6 @@
     });
   }
 
-  /* ---------- Coins atlas ---------- */
-  var atlasFlags = document.getElementById('atlasFlags');
-  if (atlasFlags) {
-    var TOTAL_COINS = 743;
-    var MAX_COUNT = 118; // United Kingdom, the largest single-country holding
-    var tiles = Array.prototype.slice.call(atlasFlags.querySelectorAll('.flag-tile'));
-    var panelDefault = document.getElementById('panelDefault');
-    var panelCountry = document.getElementById('panelCountry');
-    var panelCoin = document.getElementById('panelCoin');
-    var panelName = document.getElementById('panelName');
-    var panelCount = document.getElementById('panelCount');
-    var panelSpan = document.getElementById('panelSpan');
-    var panelBar = document.getElementById('panelBar');
-    var panelShare = document.getElementById('panelShare');
-    var panelMotif = document.getElementById('panelMotif');
-
-    tiles.forEach(function (tile) {
-      var d = tile.dataset;
-      tile.setAttribute('aria-pressed', 'false');
-      tile.setAttribute('aria-label', d.name + ', ' + d.count + ' coins, ' + d.from + ' to ' + d.to);
-
-      tile.addEventListener('click', function () {
-        var already = tile.classList.contains('is-selected');
-        tiles.forEach(function (t) {
-          t.classList.remove('is-selected');
-          t.setAttribute('aria-pressed', 'false');
-        });
-
-        if (already) {
-          panelCountry.hidden = true;
-          panelDefault.hidden = false;
-          return;
-        }
-
-        tile.classList.add('is-selected');
-        tile.setAttribute('aria-pressed', 'true');
-
-        var count = parseInt(d.count, 10);
-        var share = (count / TOTAL_COINS) * 100;
-
-        panelCoin.src = 'assets/coins/' + d.code + '.png';
-        panelCoin.alt = 'Reverse of a coin from ' + d.name + ': ' + (d.motif || '');
-        panelName.textContent = d.name;
-        panelCount.textContent = count;
-        panelSpan.textContent = d.from + ' to ' + d.to;
-        panelShare.textContent = share.toFixed(1) + '% of the collection';
-        panelMotif.textContent = d.motif || '';
-
-        panelDefault.hidden = true;
-        panelCountry.hidden = false;
-        panelBar.style.width = Math.round((count / MAX_COUNT) * 100) + '%';
-      });
-    });
-  }
-
   /* ---------- Public stats ---------- */
   var statsEl = document.getElementById('stats');
   if (statsEl && 'fetch' in window) {

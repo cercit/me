@@ -51,15 +51,9 @@
   --nav-bg: rgba(15, 25, 35, 0.88);
   --tint: rgba(255, 255, 255, 0.03);
   --tint-soft: rgba(255, 255, 255, 0.02);
-  --track: rgba(255, 255, 255, 0.07);
-  --plate: rgba(255, 255, 255, 0.04);
 
   /* Lifts the duotone shadows just enough to sit on the dark page. */
   --duotone-screen: #0f1923;
-  --flag-filter: saturate(0.7) brightness(0.9);
-  --coin-shadow: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
-  --coin-plate: transparent;
-  --coin-ring: transparent;
 }
 
 /* ---- Light, chosen by the browser ---- */
@@ -88,18 +82,10 @@
     --nav-bg: rgba(247, 249, 251, 0.88);
     --tint: rgba(15, 25, 35, 0.04);
     --tint-soft: rgba(15, 25, 35, 0.03);
-    --track: rgba(15, 25, 35, 0.1);
-    --plate: rgba(15, 25, 35, 0.05);
 
     /* Screening a near-white page colour would blow the duotone out to
        flat white, so light mode drops the lift entirely. */
     --duotone-screen: transparent;
-    --flag-filter: saturate(0.85);
-    --coin-shadow: drop-shadow(0 4px 10px rgba(15, 25, 35, 0.18));
-    /* Silver coins (Norway, Switzerland) are up to 63% near-white pixels
-       and would vanish on white, so light mode gives them a plate. */
-    --coin-plate: #eef1f5;
-    --coin-ring: rgba(15, 25, 35, 0.1);
   }
 }
 
@@ -128,14 +114,8 @@
   --nav-bg: rgba(247, 249, 251, 0.88);
   --tint: rgba(15, 25, 35, 0.04);
   --tint-soft: rgba(15, 25, 35, 0.03);
-  --track: rgba(15, 25, 35, 0.1);
-  --plate: rgba(15, 25, 35, 0.05);
 
   --duotone-screen: transparent;
-  --flag-filter: saturate(0.85);
-  --coin-shadow: drop-shadow(0 4px 10px rgba(15, 25, 35, 0.18));
-  --coin-plate: #eef1f5;
-  --coin-ring: rgba(15, 25, 35, 0.1);
 }
 
 * { box-sizing: border-box; }
@@ -908,23 +888,19 @@ main {
   line-height: 1.7;
 }
 
-.atlas {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 32px;
-  align-items: stretch;
-}
-
-/* Detail panel */
-.atlas-panel {
-  align-self: start;
-  padding: 26px;
+.coins-simple {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 28px 32px;
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
 }
 
-.panel-totals { display: flex; gap: 28px; }
+.coins-totals { display: flex; gap: 44px; }
 .total-num {
   display: block;
   color: var(--amber-text);
@@ -940,107 +916,7 @@ main {
   font-family: var(--font-mono);
   font-size: 11px;
 }
-.panel-hint {
-  margin: 18px 0 0;
-  color: var(--text-dim);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.panel-coin {
-  display: block;
-  width: 132px;
-  height: 132px;
-  margin: 0 auto 4px;
-  padding: 6px;
-  object-fit: contain;
-  /* Transparent in dark mode. In light mode this becomes a soft disc so the
-     bright silver coins keep a visible edge against a near-white panel. */
-  background: var(--coin-plate);
-  border: 1px solid var(--coin-ring);
-  border-radius: 50%;
-  /* The PNGs are keyed to transparency, so the coin sits straight on the
-     panel with no plate behind it. */
-  filter: var(--coin-shadow);
-}
-.panel-name {
-  margin: 14px 0 18px;
-  color: var(--text);
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.panel-stats { display: flex; gap: 28px; }
-.pstat-num {
-  display: block;
-  color: var(--amber-text);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.pstat-label {
-  display: block;
-  margin-top: 6px;
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-.panel-bar {
-  display: block;
-  height: 4px;
-  margin-top: 20px;
-  border-radius: 999px;
-  background: var(--track);
-  overflow: hidden;
-}
-.panel-bar-fill {
-  display: block;
-  width: 0;
-  height: 100%;
-  border-radius: 999px;
-  background: var(--amber);
-  transition: width 0.45s var(--ease, cubic-bezier(0.16, 1, 0.3, 1));
-}
-.panel-share {
-  margin: 10px 0 0;
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-
-.panel-motif {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-.motif-label {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-.motif-value {
-  display: block;
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.atlas-link {
-  display: inline-block;
-  margin-top: 22px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-.atlas-link:hover { color: var(--amber-bright); }
-.atlas-credit {
-  margin: 10px 0 0;
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 10px;
-}
+.coins-cta { padding: 14px 28px; }
 
 .coins-bridge {
   margin: 36px 0 0;
@@ -1050,66 +926,6 @@ main {
 }
 .coins-bridge a { color: var(--amber-text); border-bottom: 1px solid var(--amber-line); }
 .coins-bridge a:hover { border-bottom-color: var(--amber); }
-
-/* Flag grid */
-/* Four columns of four, sized so the grid fills the same height as the
-   detail panel beside it rather than leaving dead space below. */
-.atlas-flags {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 10px;
-}
-.flag-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 124px;
-  padding: 14px 10px;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  color: inherit;
-  font: inherit;
-  text-align: center;
-  cursor: pointer;
-  transition: var(--t);
-}
-.flag-tile img {
-  width: 60px;
-  height: 40px;
-  object-fit: contain;
-  border-radius: 2px;
-  background: var(--plate);
-  filter: var(--flag-filter);
-  transition: var(--t);
-}
-.flag-name {
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-.flag-count {
-  margin-top: -4px;
-  color: var(--text-faint);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
-}
-.flag-tile:hover {
-  border-color: var(--amber-line);
-  transform: translateY(-4px);
-}
-.flag-tile:hover img { filter: none; }
-.flag-tile.is-selected {
-  border-color: var(--amber);
-  background: var(--amber-soft);
-}
-.flag-tile.is-selected img { filter: none; }
-.flag-tile.is-selected .flag-count { color: var(--amber-text); }
 
 /* ============ Contact ============ */
 .contact { max-width: 620px; margin: 0 auto; text-align: center; }
@@ -1210,7 +1026,6 @@ body.loaded .hero-microcopy { transition-delay: 0.45s; }
 
 /* ============ Responsive ============ */
 @media (max-width: 1080px) {
-  .atlas { grid-template-columns: 260px 1fr; gap: 24px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1223,8 +1038,7 @@ body.loaded .hero-microcopy { transition-delay: 0.45s; }
   .section { padding: 64px 0; }
   .hero { padding-top: calc(var(--nav-h) + 16px); }
 
-  .atlas { grid-template-columns: 1fr; gap: 20px; }
-  .atlas-panel { position: static; }
+  .coins-simple { justify-content: center; text-align: center; }
 
   .route-bar { grid-template-columns: repeat(5, 1fr); padding: 18px 0; }
   .route-track { top: 29px; }
@@ -1253,8 +1067,8 @@ body.loaded .hero-microcopy { transition-delay: 0.45s; }
   .section-heading::after { display: none; }
   .route-bar { grid-template-columns: repeat(3, 1fr); row-gap: 18px; }
   .route-track { display: none; }
-  .atlas-flags { grid-template-columns: repeat(2, 1fr); }
-  .panel-totals, .panel-stats { gap: 20px; }
+  .coins-totals { gap: 28px; }
+  .coins-simple { padding: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

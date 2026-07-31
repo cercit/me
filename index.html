@@ -398,68 +398,22 @@
   <!-- Coins atlas -->
   <section class="section coins" id="coins">
     <h2 class="section-heading">Coins atlas</h2>
-    <p class="coins-intro">Every coin is a decision frozen in metal. Pick a flag to see what the collection holds from that country.</p>
+    <p class="coins-intro">Every coin is a decision frozen in metal. The whole collection lives on its own site, catalogued country by country.</p>
 
-    <div class="atlas">
-      <div class="atlas-panel" id="atlasPanel" aria-live="polite">
-        <div class="panel-default" id="panelDefault">
-          <div class="panel-totals">
-            <div class="total">
-              <span class="total-num">743</span>
-              <span class="total-label">coins</span>
-            </div>
-            <div class="total">
-              <span class="total-num">102</span>
-              <span class="total-label">countries</span>
-            </div>
-          </div>
-          <p class="panel-hint">The sixteen countries listed here account for 537 of the 743 coins.</p>
+    <div class="coins-simple">
+      <div class="coins-totals">
+        <div class="total">
+          <span class="total-num">743</span>
+          <span class="total-label">coins</span>
         </div>
-
-        <div class="panel-country" id="panelCountry" hidden>
-          <img class="panel-coin" id="panelCoin" src="" alt="" width="200" height="200">
-          <h3 class="panel-name" id="panelName"></h3>
-          <div class="panel-stats">
-            <div class="pstat">
-              <span class="pstat-num" id="panelCount"></span>
-              <span class="pstat-label">coins held</span>
-            </div>
-            <div class="pstat">
-              <span class="pstat-num" id="panelSpan"></span>
-              <span class="pstat-label">year span</span>
-            </div>
-          </div>
-          <div class="panel-bar"><span class="panel-bar-fill" id="panelBar"></span></div>
-          <p class="panel-share" id="panelShare"></p>
-          <div class="panel-motif">
-            <span class="motif-label">Recurring motif</span>
-            <span class="motif-value" id="panelMotif"></span>
-          </div>
+        <div class="total">
+          <span class="total-num">102</span>
+          <span class="total-label">countries</span>
         </div>
-
-        <a class="atlas-link" href="https://en.numista.com/collectionneur/dhuryodhana/" target="_blank" rel="noopener">Explore the full collection on Numista</a>
-        <p class="atlas-credit">Coin images from the <a href="https://en.numista.com/" target="_blank" rel="noopener">Numista</a> catalogue.</p>
       </div>
-
-      <div class="atlas-flags" id="atlasFlags" role="group" aria-label="Top sixteen countries by number of coins held">
-        <button type="button" class="flag-tile" data-code="gb" data-motif="Elizabeth II, on 110 of the 118" data-name="United Kingdom" data-count="118" data-from="1865" data-to="2021"><img src="https://flagcdn.com/w160/gb.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">United Kingdom</span><span class="flag-count">118 coins</span></button>
-        <button type="button" class="flag-tile" data-code="in" data-motif="The Ashoka Lion Capital" data-name="India" data-count="110" data-from="985" data-to="2026"><img src="https://flagcdn.com/w160/in.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">India</span><span class="flag-count">110 coins</span></button>
-        <button type="button" class="flag-tile" data-code="us" data-motif="Presidential portraits and state quarters" data-name="United States" data-count="81" data-from="1971" data-to="2024"><img src="https://flagcdn.com/w160/us.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">United States</span><span class="flag-count">81 coins</span></button>
-        <button type="button" class="flag-tile" data-code="cn" data-motif="National emblem, floral reverses" data-name="China" data-count="27" data-from="1795" data-to="2026"><img src="https://flagcdn.com/w160/cn.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">China</span><span class="flag-count">27 coins</span></button>
-        <button type="button" class="flag-tile" data-code="de" data-motif="The federal eagle and the euro map" data-name="Germany" data-count="26" data-from="1875" data-to="2022"><img src="https://flagcdn.com/w160/de.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Germany</span><span class="flag-count">26 coins</span></button>
-        <button type="button" class="flag-tile" data-code="ch" data-motif="Helvetia standing" data-name="Switzerland" data-count="23" data-from="1958" data-to="2009"><img src="https://flagcdn.com/w160/ch.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Switzerland</span><span class="flag-count">23 coins</span></button>
-        <button type="button" class="flag-tile" data-code="pl" data-motif="The white eagle of Poland" data-name="Poland" data-count="22" data-from="1976" data-to="2024"><img src="https://flagcdn.com/w160/pl.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Poland</span><span class="flag-count">22 coins</span></button>
-        <button type="button" class="flag-tile" data-code="fi" data-motif="The heraldic Finnish lion" data-name="Finland" data-count="21" data-from="1940" data-to="2005"><img src="https://flagcdn.com/w160/fi.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Finland</span><span class="flag-count">21 coins</span></button>
-        <button type="button" class="flag-tile" data-code="fr" data-motif="Marianne and the Sower" data-name="France" data-count="20" data-from="1951" data-to="2002"><img src="https://flagcdn.com/w160/fr.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">France</span><span class="flag-count">20 coins</span></button>
-        <button type="button" class="flag-tile" data-code="pk" data-motif="Crescent and star" data-name="Pakistan" data-count="14" data-from="1951" data-to="2023"><img src="https://flagcdn.com/w160/pk.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Pakistan</span><span class="flag-count">14 coins</span></button>
-        <button type="button" class="flag-tile" data-code="ru" data-motif="The double-headed eagle" data-name="Russia" data-count="14" data-from="1957" data-to="2020"><img src="https://flagcdn.com/w160/ru.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Russia</span><span class="flag-count">14 coins</span></button>
-        <button type="button" class="flag-tile" data-code="es" data-motif="Juan Carlos I" data-name="Spain" data-count="14" data-from="1967" data-to="2011"><img src="https://flagcdn.com/w160/es.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Spain</span><span class="flag-count">14 coins</span></button>
-        <button type="button" class="flag-tile" data-code="no" data-motif="Olav V, then Harald V" data-name="Norway" data-count="13" data-from="1969" data-to="2001"><img src="https://flagcdn.com/w160/no.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Norway</span><span class="flag-count">13 coins</span></button>
-        <button type="button" class="flag-tile" data-code="au" data-motif="Elizabeth II, on all twelve" data-name="Australia" data-count="12" data-from="1989" data-to="2021"><img src="https://flagcdn.com/w160/au.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Australia</span><span class="flag-count">12 coins</span></button>
-        <button type="button" class="flag-tile" data-code="be" data-motif="Baudouin I" data-name="Belgium" data-count="11" data-from="1928" data-to="2000"><img src="https://flagcdn.com/w160/be.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Belgium</span><span class="flag-count">11 coins</span></button>
-        <button type="button" class="flag-tile" data-code="np" data-motif="The Shah kings of Nepal" data-name="Nepal" data-count="11" data-from="1902" data-to="2009"><img src="https://flagcdn.com/w160/np.png" width="160" height="107" alt="" decoding="async"><span class="flag-name">Nepal</span><span class="flag-count">11 coins</span></button>
-      </div>
+      <a class="btn-primary coins-cta" href="https://cercit.github.io/coins/" target="_blank" rel="noopener">Explore the collection</a>
     </div>
+
     <p class="coins-bridge">That's the collector's eye. If the product side interests you more, <a href="#contact">let's talk</a>.</p>
   </section>
 

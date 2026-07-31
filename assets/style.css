@@ -881,40 +881,64 @@ main {
 
 /* ============ Coins atlas ============ */
 .coins-intro {
-  max-width: 60ch;
-  margin: -18px 0 32px;
+  max-width: 62ch;
+  margin: -18px auto 32px;
   color: var(--text-dim);
   font-size: 15px;
   line-height: 1.7;
+  text-align: center;
 }
 
 .coins-simple {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 28px;
-  padding: 28px 32px;
+  gap: 30px;
+  /* Hugs its content rather than stretching the full column, which left a
+     wide empty band either side of the numbers. */
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 40px 32px;
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
 }
 
-.coins-totals { display: flex; flex-wrap: wrap; gap: 36px; }
+/* Three equal columns so the numbers sit on the card's own centre line
+   instead of bunching at one edge and leaving a gap beside the button. */
+.coins-totals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: 580px;
+}
+.total { position: relative; text-align: center; }
+.total + .total::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1px;
+  height: 40px;
+  transform: translateY(-50%);
+  background: var(--line);
+}
 .total-num {
   display: block;
   color: var(--amber-text);
-  font-size: 34px;
+  font-size: clamp(32px, 5vw, 40px);
   font-weight: 700;
   line-height: 1;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
 .total-label {
   display: block;
-  margin-top: 6px;
+  margin-top: 8px;
   color: var(--text-faint);
   font-family: var(--font-mono);
   font-size: 11px;
+  letter-spacing: 0.04em;
   white-space: nowrap;
 }
 .coins-cta { padding: 14px 28px; }
@@ -1039,7 +1063,7 @@ body.loaded .hero-microcopy { transition-delay: 0.45s; }
   .section { padding: 64px 0; }
   .hero { padding-top: calc(var(--nav-h) + 16px); }
 
-  .coins-simple { justify-content: center; text-align: center; }
+  .coins-simple { padding: 32px 24px; gap: 26px; }
 
   .route-bar { grid-template-columns: repeat(5, 1fr); padding: 18px 0; }
   .route-track { top: 29px; }
@@ -1068,8 +1092,8 @@ body.loaded .hero-microcopy { transition-delay: 0.45s; }
   .section-heading::after { display: none; }
   .route-bar { grid-template-columns: repeat(3, 1fr); row-gap: 18px; }
   .route-track { display: none; }
-  .coins-totals { gap: 20px 24px; justify-content: center; }
-  .coins-simple { padding: 24px; }
+  .coins-simple { padding: 28px 18px; }
+  .total-label { font-size: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

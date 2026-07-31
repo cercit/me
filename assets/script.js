@@ -32,6 +32,38 @@
     });
   }
 
+  /* ---------- Theme ---------- */
+  // No stored choice means no data-theme attribute, which leaves the CSS
+  // prefers-color-scheme block in charge and lets the page follow the OS live.
+  var root = document.documentElement;
+  var prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+  var themeBtns = document.querySelectorAll('.theme-toggle');
+
+  function activeTheme() {
+    return root.getAttribute('data-theme') || (prefersLight.matches ? 'light' : 'dark');
+  }
+  function syncThemeLabel() {
+    var next = activeTheme() === 'dark' ? 'light' : 'dark';
+    themeBtns.forEach(function (b) {
+      b.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+      b.setAttribute('title', 'Switch to ' + next + ' theme');
+    });
+  }
+  themeBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var next = activeTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      syncThemeLabel();
+    });
+  });
+  // Keep the label honest if the OS flips while the page is open and the
+  // visitor has not overridden it.
+  if (typeof prefersLight.addEventListener === 'function') {
+    prefersLight.addEventListener('change', syncThemeLabel);
+  }
+  syncThemeLabel();
+
   /* ---------- Nav state: always visible, condenses once scrolled ---------- */
   var header = document.getElementById('header');
   var sentinel = document.getElementById('navSentinel');
@@ -187,38 +219,60 @@
   /* ---------- Public stats ---------- */
   var statsEl = document.getElementById('stats');
   if (statsEl && 'fetch' in window) {
-    var NS = 'cercit-me-live';
-    // Reads need the trailing slash: without it the API 301s, and a CORS
-    // request that redirects is rejected by the browser.
+    var NS = 'cercit-me';
+    // Every request is raced against a hard timeout. A counter host that accepts
+    // the TLS handshake but never answers would otherwise leave the promise
+    // pending forever and strand the placeholder dashes on screen.
     var api = function (key, bump) {
-      var url = 'https://api.counterapi.dev/v1/' + NS + '/' + key + (bump ? '/up' : '/');
-      return fetch(url).then(function (r) {
-        // The API answers "record not found" with 400 (not 404) until a
-        // counter has been incremented at least once. That is a zero, not a failure.
-        if (r.status === 400 || r.status === 404) return 0;
-        if (!r.ok) throw new Error('bad status');
+      var url = 'https://abacus.jasoncameron.dev/' + (bump ? 'hit' : 'get') + '/' + NS + '/' + key;
+      var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+      var timer = window.setTimeout(function () { if (ctrl) ctrl.abort(); }, 5000);
+      var req = fetch(url, ctrl ? { signal: ctrl.signal } : undefined).then(function (r) {
+        // A key that has never been hit 404s. That is a zero, not a failure.
+        if (r.status === 404) return 0;
+        if (!r.ok) throw new Error('bad status ' + r.status);
         return r.json().then(function (j) {
-          return typeof j.count === 'number' ? j.count : 0;
+          return typeof j.value === 'number' ? j.value : 0;
         });
       });
+      var guard = new Promise(function (_, reject) {
+        window.setTimeout(function () { reject(new Error('timeout')); }, 5200);
+      });
+      return Promise.race([req, guard])
+        .then(function (v) { window.clearTimeout(timer); return v; },
+              function (e) { window.clearTimeout(timer); throw e; });
     };
     var paint = function (id, target) {
       var el = document.getElementById(id);
       if (!el) return;
-      if (reduceMotion) { el.textContent = target.toLocaleString(); return; }
+      var final = target.toLocaleString();
+      // requestAnimationFrame does not fire in a background tab, so writing the
+      // value only from inside the animation would strand the placeholder for
+      // anyone who opens the page in a background tab. Land the real number
+      // first, then animate up to it purely as decoration.
+      el.textContent = final;
+      if (reduceMotion || document.visibilityState !== 'visible' ||
+          typeof window.requestAnimationFrame !== 'function') return;
       var start = null;
       var step = function (ts) {
         if (!start) start = ts;
         var p = Math.min((ts - start) / 900, 1);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString();
+        el.textContent = p < 1
+          ? Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString()
+          : final;
         if (p < 1) window.requestAnimationFrame(step);
       };
       window.requestAnimationFrame(step);
     };
 
     // One page view per browser session, so a refresh loop cannot inflate it.
-    var fresh = !sessionStorage.getItem('cercit-seen');
-    if (fresh) sessionStorage.setItem('cercit-seen', '1');
+    // Storage access throws outright in some privacy modes, so treat an
+    // unavailable store as "first visit" rather than letting it break the strip.
+    var fresh = true;
+    try {
+      fresh = !sessionStorage.getItem('cercit-seen');
+      if (fresh) sessionStorage.setItem('cercit-seen', '1');
+    } catch (e) {}
 
     Promise.all([api('views', fresh), api('resume', false), api('contact', false)])
       .then(function (n) {

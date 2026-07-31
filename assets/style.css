@@ -1,4 +1,34 @@
+/* ============================================================
+   Tokens
+
+   The page follows the browser's colour-scheme preference on its own.
+   The toggle in the nav writes data-theme onto <html> to override that,
+   so the cascade below is ordered: dark default -> light when the OS asks
+   for it -> explicit data-theme always wins.
+
+   --amber stays the same bright fill in both themes so the brand reads
+   identically, but amber text on a near-white page only reaches ~2.1:1,
+   so text and links use --amber-text, which darkens in light mode.
+   ============================================================ */
 :root {
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono: 'Fira Code', 'SF Mono', monospace;
+
+  --radius-card: 8px;
+  --radius-control: 6px;
+
+  --nav-h: 76px;
+  --nav-h-scrolled: 62px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --t: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---- Dark (default) ---- */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
   --bg: #0f1923;
   --bg-raised: #16212d;
   --bg-card: #1a2634;
@@ -12,21 +42,100 @@
   --text-faint: #808fa3;
 
   --amber: #f59e0b;
+  --amber-text: #f59e0b;
   --amber-soft: rgba(245, 158, 11, 0.12);
   --amber-line: rgba(245, 158, 11, 0.25);
   --amber-bright: #fbbf24;
+  --on-amber: #0f1923;
 
-  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
-  --font-mono: 'Fira Code', 'SF Mono', monospace;
+  --nav-bg: rgba(15, 25, 35, 0.88);
+  --tint: rgba(255, 255, 255, 0.03);
+  --tint-soft: rgba(255, 255, 255, 0.02);
+  --track: rgba(255, 255, 255, 0.07);
+  --plate: rgba(255, 255, 255, 0.04);
 
-  --radius-card: 8px;
-  --radius-control: 6px;
+  /* Lifts the duotone shadows just enough to sit on the dark page. */
+  --duotone-screen: #0f1923;
+  --flag-filter: saturate(0.7) brightness(0.9);
+  --coin-shadow: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+  --coin-plate: transparent;
+  --coin-ring: transparent;
+}
 
-  --nav-h: 76px;
-  --nav-h-scrolled: 62px;
+/* ---- Light, chosen by the browser ---- */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
 
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --t: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    --bg: #f7f9fb;
+    --bg-raised: #ffffff;
+    --bg-card: #ffffff;
+    --line: rgba(15, 25, 35, 0.12);
+    --line-strong: rgba(15, 25, 35, 0.2);
+
+    --text: #0d1721;
+    --text-body: #41505f;
+    --text-dim: #556374;
+    --text-faint: #5f6d7e;
+
+    --amber: #f59e0b;
+    --amber-text: #96560a;
+    --amber-soft: rgba(180, 83, 9, 0.1);
+    --amber-line: rgba(150, 86, 10, 0.45);
+    --amber-bright: #b45309;
+    --on-amber: #0f1923;
+
+    --nav-bg: rgba(247, 249, 251, 0.88);
+    --tint: rgba(15, 25, 35, 0.04);
+    --tint-soft: rgba(15, 25, 35, 0.03);
+    --track: rgba(15, 25, 35, 0.1);
+    --plate: rgba(15, 25, 35, 0.05);
+
+    /* Screening a near-white page colour would blow the duotone out to
+       flat white, so light mode drops the lift entirely. */
+    --duotone-screen: transparent;
+    --flag-filter: saturate(0.85);
+    --coin-shadow: drop-shadow(0 4px 10px rgba(15, 25, 35, 0.18));
+    /* Silver coins (Norway, Switzerland) are up to 63% near-white pixels
+       and would vanish on white, so light mode gives them a plate. */
+    --coin-plate: #eef1f5;
+    --coin-ring: rgba(15, 25, 35, 0.1);
+  }
+}
+
+/* ---- Light, chosen explicitly by the toggle ---- */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f7f9fb;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --line: rgba(15, 25, 35, 0.12);
+  --line-strong: rgba(15, 25, 35, 0.2);
+
+  --text: #0d1721;
+  --text-body: #41505f;
+  --text-dim: #556374;
+  --text-faint: #5f6d7e;
+
+  --amber: #f59e0b;
+  --amber-text: #96560a;
+  --amber-soft: rgba(180, 83, 9, 0.1);
+  --amber-line: rgba(150, 86, 10, 0.45);
+  --amber-bright: #b45309;
+  --on-amber: #0f1923;
+
+  --nav-bg: rgba(247, 249, 251, 0.88);
+  --tint: rgba(15, 25, 35, 0.04);
+  --tint-soft: rgba(15, 25, 35, 0.03);
+  --track: rgba(15, 25, 35, 0.1);
+  --plate: rgba(15, 25, 35, 0.05);
+
+  --duotone-screen: transparent;
+  --flag-filter: saturate(0.85);
+  --coin-shadow: drop-shadow(0 4px 10px rgba(15, 25, 35, 0.18));
+  --coin-plate: #eef1f5;
+  --coin-ring: rgba(15, 25, 35, 0.1);
 }
 
 * { box-sizing: border-box; }
@@ -47,7 +156,7 @@ body.menu-open { overflow: hidden; }
 
 img { max-width: 100%; display: block; }
 
-a { color: var(--amber); text-decoration: none; transition: var(--t); }
+a { color: var(--amber-text); text-decoration: none; transition: var(--t); }
 
 ::selection { background: var(--amber-soft); color: var(--text); }
 
@@ -65,7 +174,7 @@ button:focus-visible,
   left: 16px;
   z-index: 100;
   padding: 10px 18px;
-  color: var(--bg);
+  color: var(--on-amber);
   background: var(--amber);
   border-radius: var(--radius-control);
   font-family: var(--font-mono);
@@ -87,6 +196,9 @@ button:focus-visible,
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+/* Only JS ever removes the overlay, so without JS it would sit there as a
+   full-screen opaque panel and the page would look blank. */
+html:not(.js) .loader { display: none; }
 
 .loader-coin svg { width: 92px; height: 92px; }
 .loader .coin-ring {
@@ -120,7 +232,7 @@ button:focus-visible,
   width: 100%;
   height: var(--nav-h);
   z-index: 50;
-  background: rgba(15, 25, 35, 0.88);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: height var(--t), transform var(--t), border-color var(--t);
@@ -147,10 +259,41 @@ button:focus-visible,
   font-weight: 600;
   letter-spacing: -0.01em;
 }
-.logo-accent { color: var(--amber); }
-.logo:hover { color: var(--amber); }
+.logo-accent { color: var(--amber-text); }
+.logo:hover { color: var(--amber-text); }
 
 .nav-right { display: flex; align-items: center; gap: 8px; }
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  transition: var(--t);
+}
+.theme-toggle:hover { color: var(--amber-text); border-color: var(--amber-line); }
+.theme-toggle svg { width: 17px; height: 17px; }
+/* Show the icon for the theme you would switch TO. */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme='dark']) .theme-toggle .icon-moon { display: none; }
+}
+:root[data-theme='light'] .theme-toggle .icon-sun { display: block; }
+:root[data-theme='light'] .theme-toggle .icon-moon { display: none; }
+:root[data-theme='dark'] .theme-toggle .icon-sun { display: none; }
+:root[data-theme='dark'] .theme-toggle .icon-moon { display: block; }
+
+.mobile-menu .theme-toggle { width: auto; gap: 8px; padding: 10px 18px; font-size: 13px; }
 
 .nav-links {
   display: flex;
@@ -168,12 +311,12 @@ button:focus-visible,
   font-weight: 500;
   border-radius: var(--radius-control);
 }
-.nav-links a:hover { color: var(--amber); background: rgba(255, 255, 255, 0.03); }
+.nav-links a:hover { color: var(--amber-text); background: var(--tint); }
 
 .resume-btn {
   margin-left: 12px;
   padding: 9px 18px;
-  color: var(--bg);
+  color: var(--on-amber);
   background: var(--amber);
   border-radius: var(--radius-control);
   font-size: 13px;
@@ -240,7 +383,7 @@ button:focus-visible,
 }
 .mobile-links li { margin: 16px 0; }
 .mobile-links a { color: var(--text); font-size: 17px; font-weight: 500; }
-.mobile-links a:hover { color: var(--amber); }
+.mobile-links a:hover { color: var(--amber-text); }
 
 /* ============ Layout ============ */
 main {
@@ -322,11 +465,11 @@ main {
   white-space: nowrap;
   transition: var(--t);
 }
-.btn-primary { color: var(--bg); background: var(--amber); border: 1px solid var(--amber); }
+.btn-primary { color: var(--on-amber); background: var(--amber); border: 1px solid var(--amber); }
 .btn-primary:hover { background: var(--amber-bright); border-color: var(--amber-bright); transform: translateY(-2px); }
 .btn-primary:active { transform: scale(0.98); }
 
-.btn-outline { color: var(--amber); background: transparent; border: 1px solid var(--amber-line); }
+.btn-outline { color: var(--amber-text); background: transparent; border: 1px solid var(--amber-line); }
 .btn-outline:hover { background: var(--amber-soft); border-color: var(--amber); transform: translateY(-2px); }
 .btn-outline:active { transform: scale(0.98); }
 
@@ -371,7 +514,7 @@ main {
   box-shadow: 0 0 0 4px var(--amber-soft);
 }
 .route-city { color: var(--text-dim); font-size: 13px; font-weight: 500; }
-.route-stop.is-active .route-city { color: var(--amber); }
+.route-stop.is-active .route-city { color: var(--amber-text); }
 .route-year { color: var(--text-faint); font-family: var(--font-mono); font-size: 11px; }
 
 /* ============ About ============ */
@@ -426,7 +569,7 @@ main {
 .pic-facts { margin-top: 40px; }
 .facts-title {
   margin: 0 0 14px;
-  color: var(--amber);
+  color: var(--amber-text);
   font-family: var(--font-mono);
   font-size: 13px;
 }
@@ -455,7 +598,7 @@ main {
 .plan { margin-top: 64px; }
 .plan-overline {
   margin: 0 0 20px;
-  color: var(--amber);
+  color: var(--amber-text);
   font-family: var(--font-mono);
   font-size: 14px;
 }
@@ -474,7 +617,7 @@ main {
 .plan-item:hover { border-color: var(--amber-line); transform: translateY(-4px); }
 .plan-when {
   margin: 0 0 5px;
-  color: var(--amber);
+  color: var(--amber-text);
   font-family: var(--font-mono);
   font-size: 12px;
 }
@@ -511,8 +654,8 @@ main {
   cursor: pointer;
   transition: var(--t);
 }
-.tab-btn:hover { color: var(--amber); background: rgba(255, 255, 255, 0.02); }
-.tab-btn.is-active { color: var(--amber); }
+.tab-btn:hover { color: var(--amber-text); background: var(--tint-soft); }
+.tab-btn.is-active { color: var(--amber-text); }
 .tab-highlight {
   position: absolute;
   top: 0;
@@ -536,7 +679,7 @@ main {
   font-weight: 600;
   letter-spacing: -0.01em;
 }
-.tab-panel .at { color: var(--amber); }
+.tab-panel .at { color: var(--amber-text); }
 .tab-panel .range {
   margin: 0 0 22px;
   color: var(--text-faint);
@@ -614,7 +757,7 @@ main {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: var(--bg);
+  background: var(--duotone-screen);
   mix-blend-mode: screen;
   transition: var(--t);
 }
@@ -634,7 +777,7 @@ main {
   letter-spacing: -0.01em;
 }
 .featured-title a { color: inherit; }
-.featured-title a:hover { color: var(--amber); }
+.featured-title a:hover { color: var(--amber-text); }
 .featured-desc { margin: 0 0 auto; font-size: 14px; line-height: 1.65; }
 
 .featured-metric {
@@ -646,7 +789,7 @@ main {
   border-top: 1px solid var(--line);
 }
 .metric-value {
-  color: var(--amber);
+  color: var(--amber-text);
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
@@ -665,7 +808,7 @@ main {
 .featured-tech li {
   padding: 3px 10px;
   color: var(--text-dim);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--tint);
   border-radius: var(--radius-control);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -673,7 +816,7 @@ main {
 .featured-note { margin: 14px 0 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 11px; }
 .featured-links { display: flex; gap: 8px; margin-top: 14px; }
 .featured-links a { color: var(--text-dim); padding: 4px; }
-.featured-links a:hover { color: var(--amber); transform: translateY(-2px); }
+.featured-links a:hover { color: var(--amber-text); transform: translateY(-2px); }
 
 /* Work bottom: other projects */
 .work-bottom { margin-top: 72px; }
@@ -703,10 +846,10 @@ main {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
-  color: var(--amber);
+  color: var(--amber-text);
 }
 .project-card-head .ext { color: var(--text-faint); }
-.project-card:hover .ext { color: var(--amber); }
+.project-card:hover .ext { color: var(--amber-text); }
 .project-card h4 {
   margin: 0 0 8px;
   color: var(--text);
@@ -716,7 +859,7 @@ main {
 .project-card h4 .soon {
   display: inline-block;
   margin-left: 6px;
-  color: var(--amber);
+  color: var(--amber-text);
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 400;
@@ -762,7 +905,7 @@ main {
 .panel-totals { display: flex; gap: 28px; }
 .total-num {
   display: block;
-  color: var(--amber);
+  color: var(--amber-text);
   font-size: 34px;
   font-weight: 700;
   line-height: 1;
@@ -787,10 +930,16 @@ main {
   width: 132px;
   height: 132px;
   margin: 0 auto 4px;
+  padding: 6px;
   object-fit: contain;
+  /* Transparent in dark mode. In light mode this becomes a soft disc so the
+     bright silver coins keep a visible edge against a near-white panel. */
+  background: var(--coin-plate);
+  border: 1px solid var(--coin-ring);
+  border-radius: 50%;
   /* The PNGs are keyed to transparency, so the coin sits straight on the
      panel with no plate behind it. */
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+  filter: var(--coin-shadow);
 }
 .panel-name {
   margin: 14px 0 18px;
@@ -802,7 +951,7 @@ main {
 .panel-stats { display: flex; gap: 28px; }
 .pstat-num {
   display: block;
-  color: var(--amber);
+  color: var(--amber-text);
   font-size: 28px;
   font-weight: 700;
   line-height: 1;
@@ -820,7 +969,7 @@ main {
   height: 4px;
   margin-top: 20px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--track);
   overflow: hidden;
 }
 .panel-bar-fill {
@@ -902,8 +1051,8 @@ main {
   height: 40px;
   object-fit: contain;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.04);
-  filter: saturate(0.7) brightness(0.9);
+  background: var(--plate);
+  filter: var(--flag-filter);
   transition: var(--t);
 }
 .flag-name {
@@ -929,11 +1078,11 @@ main {
   background: var(--amber-soft);
 }
 .flag-tile.is-selected img { filter: none; }
-.flag-tile.is-selected .flag-count { color: var(--amber); }
+.flag-tile.is-selected .flag-count { color: var(--amber-text); }
 
 /* ============ Contact ============ */
 .contact { max-width: 620px; margin: 0 auto; text-align: center; }
-.contact-overline { margin: 0 0 16px; color: var(--amber); font-family: var(--font-mono); font-size: 14px; }
+.contact-overline { margin: 0 0 16px; color: var(--amber-text); font-family: var(--font-mono); font-size: 14px; }
 .contact-title {
   margin: 0 0 18px;
   color: var(--text);
@@ -955,7 +1104,7 @@ main {
   list-style: none;
 }
 .social-row a { display: block; padding: 9px; color: var(--text-dim); }
-.social-row a:hover { color: var(--amber); transform: translateY(-3px); }
+.social-row a:hover { color: var(--amber-text); transform: translateY(-3px); }
 .site-footer p { margin: 0; color: var(--text-faint); font-family: var(--font-mono); font-size: 12px; }
 
 /* ============ Public stats ============ */
@@ -978,7 +1127,7 @@ main {
 }
 .stat-value {
   display: block;
-  color: var(--amber);
+  color: var(--amber-text);
   font-size: clamp(28px, 5vw, 38px);
   font-weight: 700;
   line-height: 1;

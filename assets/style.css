@@ -900,7 +900,7 @@ main {
   border-radius: var(--radius-card);
 }
 
-.coins-totals { display: flex; gap: 44px; }
+.coins-totals { display: flex; flex-wrap: wrap; gap: 36px; }
 .total-num {
   display: block;
   color: var(--amber-text);
@@ -915,6 +915,7 @@ main {
   color: var(--text-faint);
   font-family: var(--font-mono);
   font-size: 11px;
+  white-space: nowrap;
 }
 .coins-cta { padding: 14px 28px; }
 
@@ -1067,7 +1068,7 @@ body.loaded .hero-microcopy { transition-delay: 0.45s; }
   .section-heading::after { display: none; }
   .route-bar { grid-template-columns: repeat(3, 1fr); row-gap: 18px; }
   .route-track { display: none; }
-  .coins-totals { gap: 28px; }
+  .coins-totals { gap: 20px 24px; justify-content: center; }
   .coins-simple { padding: 24px; }
 }
 

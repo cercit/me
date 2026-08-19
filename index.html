@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2244%22 fill=%22none%22 stroke=%22%23f59e0b%22 stroke-width=%224%22/><text x=%2250%22 y=%2253%22 text-anchor=%22middle%22 dominant-baseline=%22central%22 fill=%22%23f59e0b%22 font-family=%22monospace%22 font-size=%2242%22 font-weight=%22600%22>S</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://cercit.github.io/me/">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://cercit.github.io/me/">
@@ -42,9 +42,9 @@
   ]
 }
 </script>
-<meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0A0A0F" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7f9fb" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="assets/style.css?v=3">
+<link rel="stylesheet" href="assets/style.css?v=4">
 <script>
 // Runs before first paint so a stored theme choice never flashes the other
 // theme. With nothing stored, no attribute is set and the CSS
@@ -118,6 +118,7 @@
 
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-gradient" aria-hidden="true"></div>
     <div class="hero-content">
       <h1 class="hero-name">Sameer Shreenivas Mittimani.</h1>
       <h2 class="hero-subtitle">Data &rarr; Systems &rarr; Products</h2>
@@ -129,9 +130,8 @@
       <p class="hero-text">Twelve years at Sundaram Finance &mdash; started at a branch counter, now running national auto retail analytics. Studying product management at IIT Roorkee.</p>
       <div class="hero-buttons">
         <a class="btn-primary" href="#work">See my work</a>
-        <a class="btn-outline" href="mailto:samsm@outlook.in">Get in touch</a>
       </div>
-      <p class="hero-microcopy">Straight to my inbox &mdash; no contact form, no recruiter screen.</p>
+      <p class="hero-microcopy"><a href="mailto:samsm@outlook.in">samsm@outlook.in</a> &mdash; straight to my inbox, no contact form.</p>
     </div>
   </section>
 
@@ -445,6 +445,7 @@
 
 </main>
 
-<script src="assets/script.js?v=3"></script>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<script src="assets/script.js?v=4"></script>
 </body>
 </html>

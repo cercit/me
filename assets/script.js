@@ -10,7 +10,7 @@
     loader.classList.add('replay');
     void loader.offsetWidth;
     loader.classList.remove('replay');
-    window.setTimeout(hideLoader, 1700);
+    window.setTimeout(hideLoader, 900);
   }
   if (reduceMotion) {
     hideLoader();
@@ -19,7 +19,7 @@
     window.setTimeout(function () {
       hideLoader();
       document.body.classList.add('loaded');
-    }, 1700);
+    }, 900);
   }
 
   /* ---------- Logo: replay loader + scroll to top ---------- */
@@ -262,5 +262,43 @@
     window.setTimeout(function () {
       revealEls.forEach(function (el) { el.classList.add('is-visible'); });
     }, 2600);
+  }
+
+  /* ---------- Cursor follower (desktop only) ---------- */
+  var dot = document.getElementById('cursorDot');
+  if (dot && window.matchMedia('(pointer: fine)').matches && !reduceMotion) {
+    var dx = 0, dy = 0, mx = 0, my = 0;
+    document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; dot.classList.add('visible'); });
+    document.addEventListener('mouseleave', function () { dot.classList.remove('visible'); });
+    var interactives = 'a, button, .project-card, .featured, .tab-btn, .btn-primary, .btn-outline, .resume-btn';
+    document.addEventListener('mouseover', function (e) { if (e.target.closest(interactives)) dot.classList.add('hover'); });
+    document.addEventListener('mouseout', function (e) { if (e.target.closest(interactives)) dot.classList.remove('hover'); });
+    (function tick() {
+      dx += (mx - dx) * 0.15;
+      dy += (my - dy) * 0.15;
+      dot.style.transform = 'translate(' + (dx - 4) + 'px,' + (dy - 4) + 'px)';
+      requestAnimationFrame(tick);
+    })();
+  }
+
+  /* ---------- Word-by-word headline reveal ---------- */
+  if (!reduceMotion) {
+    var heroName = document.querySelector('.hero-name');
+    if (heroName) {
+      var text = heroName.textContent;
+      var words = text.split(/\s+/);
+      heroName.innerHTML = '';
+      words.forEach(function (w, i) {
+        var span = document.createElement('span');
+        span.className = 'word-reveal';
+        span.textContent = w;
+        span.style.transitionDelay = (i * 80 + 100) + 'ms';
+        heroName.appendChild(span);
+        if (i < words.length - 1) heroName.appendChild(document.createTextNode(' '));
+      });
+      window.setTimeout(function () {
+        heroName.querySelectorAll('.word-reveal').forEach(function (s) { s.classList.add('is-visible'); });
+      }, 150);
+    }
   }
 })();

@@ -12,6 +12,7 @@
    ============================================================ */
 :root {
   --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', -apple-system, system-ui, sans-serif;
   --font-mono: 'Fira Code', 'SF Mono', monospace;
 
   --radius-card: 8px;
@@ -29,9 +30,9 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --bg: #0f1923;
-  --bg-raised: #16212d;
-  --bg-card: #1a2634;
+  --bg: #0A0A0F;
+  --bg-raised: #111118;
+  --bg-card: #15151E;
   --line: rgba(148, 163, 184, 0.1);
   --line-strong: rgba(148, 163, 184, 0.2);
 
@@ -46,14 +47,14 @@
   --amber-soft: rgba(245, 158, 11, 0.12);
   --amber-line: rgba(245, 158, 11, 0.25);
   --amber-bright: #fbbf24;
-  --on-amber: #0f1923;
+  --on-amber: #0A0A0F;
 
-  --nav-bg: rgba(15, 25, 35, 0.88);
+  --nav-bg: rgba(10, 10, 15, 0.88);
   --tint: rgba(255, 255, 255, 0.03);
   --tint-soft: rgba(255, 255, 255, 0.02);
 
   /* Lifts the duotone shadows just enough to sit on the dark page. */
-  --duotone-screen: #0f1923;
+  --duotone-screen: #0A0A0F;
 }
 
 /* ---- Light, chosen by the browser ---- */
@@ -77,7 +78,7 @@
     --amber-soft: rgba(180, 83, 9, 0.1);
     --amber-line: rgba(150, 86, 10, 0.45);
     --amber-bright: #b45309;
-    --on-amber: #0f1923;
+    --on-amber: #0A0A0F;
 
     --nav-bg: rgba(247, 249, 251, 0.88);
     --tint: rgba(15, 25, 35, 0.04);
@@ -109,7 +110,7 @@
   --amber-soft: rgba(180, 83, 9, 0.1);
   --amber-line: rgba(150, 86, 10, 0.45);
   --amber-bright: #b45309;
-  --on-amber: #0f1923;
+  --on-amber: #0A0A0F;
 
   --nav-bg: rgba(247, 249, 251, 0.88);
   --tint: rgba(15, 25, 35, 0.04);
@@ -188,7 +189,7 @@ html:not(.js) .loader { display: none; }
   stroke-dasharray: 277;
   stroke-dashoffset: 277;
   transform-origin: center;
-  animation: coinDraw 1s var(--ease) forwards 0.15s;
+  animation: coinDraw 0.55s var(--ease) forwards 0.1s;
 }
 .loader .coin-letter {
   fill: var(--amber);
@@ -196,7 +197,7 @@ html:not(.js) .loader { display: none; }
   font-size: 40px;
   font-weight: 500;
   opacity: 0;
-  animation: coinLetter 0.5s ease forwards 0.9s;
+  animation: coinLetter 0.3s ease forwards 0.5s;
 }
 .loader.replay .coin-ring { animation: none; stroke-dashoffset: 277; }
 .loader.replay .coin-letter { animation: none; opacity: 0; }
@@ -379,7 +380,8 @@ main {
 .section-heading {
   margin: 0 0 44px;
   color: var(--text);
-  font-size: clamp(26px, 4vw, 34px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 38px);
   font-weight: 700;
   letter-spacing: -0.02em;
   display: flex;
@@ -411,26 +413,45 @@ main {
 
 /* ============ Hero ============ */
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 100dvh;
   padding: calc(var(--nav-h) + 24px) 0 72px;
+  overflow: hidden;
 }
-.hero-content { max-width: 780px; }
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 20% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 60%);
+  animation: heroShift 12s ease-in-out infinite alternate;
+}
+@keyframes heroShift {
+  0% { opacity: 0.7; transform: scale(1) translate(0, 0); }
+  50% { opacity: 1; transform: scale(1.05) translate(-1%, 2%); }
+  100% { opacity: 0.8; transform: scale(1.02) translate(1%, -1%); }
+}
+.hero-content { position: relative; z-index: 1; max-width: 780px; }
 
 .hero-name {
   margin: 0 0 6px;
   color: var(--text);
-  font-size: clamp(34px, 5.5vw, 56px);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 .hero-subtitle {
   margin: 0 0 20px;
   color: var(--text-dim);
-  font-size: clamp(19px, 2.6vw, 26px);
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.8vw, 28px);
   font-weight: 500;
   letter-spacing: -0.01em;
 }
@@ -958,6 +979,7 @@ main {
 .contact-title {
   margin: 0 0 18px;
   color: var(--text);
+  font-family: var(--font-display);
   font-size: clamp(32px, 5vw, 46px);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -1021,6 +1043,54 @@ main {
   font-size: 11px;
 }
 
+/* ============ Light hero gradient ============ */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .hero-gradient {
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 20% 80%, rgba(245, 158, 11, 0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 40% at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 60%);
+  }
+}
+:root[data-theme='light'] .hero-gradient {
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 20% 80%, rgba(245, 158, 11, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 60%);
+}
+
+/* ============ Cursor follower ============ */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.15s ease;
+  mix-blend-mode: difference;
+}
+.cursor-dot.visible { opacity: 0.7; }
+.cursor-dot.hover { transform: scale(3.5); opacity: 0.5; }
+@media (pointer: coarse) { .cursor-dot { display: none; } }
+
+/* ============ Word reveal ============ */
+.word-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.word-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* ============ Motion ============ */
 .js .reveal {
   opacity: 0;
@@ -1029,8 +1099,8 @@ main {
 .reveal.is-visible {
   opacity: 1;
   transform: none;
-  transition: opacity 0.6s var(--ease) var(--reveal-delay, 0ms),
-              transform 0.6s var(--ease) var(--reveal-delay, 0ms);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
 }
 
 .js .hero-content > * {
@@ -1040,7 +1110,7 @@ main {
 body.loaded .hero-content > * {
   opacity: 1;
   transform: none;
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 body.loaded .hero-name { transition-delay: 0.05s; }
 body.loaded .hero-subtitle { transition-delay: 0.15s; }

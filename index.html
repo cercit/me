@@ -46,7 +46,7 @@
 </script>
 <meta name="theme-color" content="#0A0A0F" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7f9fb" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="assets/style.css?v=6">
+<link rel="stylesheet" href="assets/style.css?v=8">
 <script>
 (function () {
   var t = null;
@@ -118,6 +118,7 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-gradient" aria-hidden="true"></div>
+    <div class="hero-inner">
     <div class="hero-content">
       <h1 class="hero-name">Sameer Shreenivas Mittimani.</h1>
       <h2 class="hero-subtitle">Built in the field. Building for it.</h2>
@@ -131,6 +132,51 @@
         <a class="btn-primary" href="#work">See my work</a>
       </div>
       <p class="hero-microcopy"><a href="mailto:samsm@outlook.in">samsm@outlook.in</a> &mdash; straight to my inbox, no contact form.</p>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="viz" viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+        <defs>
+          <linearGradient id="vizFill" x1="0" y1="0" x2="0" y2="1">
+            <stop class="viz-stop-top" offset="0%" />
+            <stop class="viz-stop-bottom" offset="100%" />
+          </linearGradient>
+        </defs>
+
+        <g class="viz-grid">
+          <line x1="56" y1="90" x2="404" y2="90" />
+          <line x1="56" y1="150" x2="404" y2="150" />
+          <line x1="56" y1="210" x2="404" y2="210" />
+          <line x1="56" y1="270" x2="404" y2="270" />
+        </g>
+
+        <path class="viz-axis" pathLength="1" d="M56 48 V330 H404" />
+
+        <g class="viz-bars">
+          <rect x="79" y="262" width="26" height="68" rx="3" />
+          <rect x="147" y="226" width="26" height="104" rx="3" />
+          <rect x="215" y="244" width="26" height="86" rx="3" />
+          <rect x="283" y="188" width="26" height="142" rx="3" />
+          <rect x="351" y="152" width="26" height="178" rx="3" />
+        </g>
+
+        <path class="viz-area" d="M92 236 L160 198 L228 214 L296 158 L364 112 L364 330 L92 330 Z" fill="url(#vizFill)" />
+
+        <path class="viz-line" pathLength="1" d="M92 236 L160 198 L228 214 L296 158 L364 112" />
+        <path class="viz-proj" pathLength="1" d="M364 112 L404 84" />
+
+        <g class="viz-nodes">
+          <circle cx="92" cy="236" r="4.5" />
+          <circle cx="160" cy="198" r="4.5" />
+          <circle cx="228" cy="214" r="4.5" />
+          <circle cx="296" cy="158" r="4.5" />
+          <circle cx="364" cy="112" r="4.5" />
+        </g>
+
+        <circle class="viz-pulse" cx="364" cy="112" r="9" />
+      </svg>
+    </div>
+
     </div>
   </section>
 
@@ -343,6 +389,6 @@
 
 </main>
 
-<script src="assets/script.js?v=6"></script>
+<script src="assets/script.js?v=8"></script>
 </body>
 </html>

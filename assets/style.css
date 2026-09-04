@@ -433,7 +433,75 @@ main {
   50% { opacity: 1; transform: scale(1.05) translate(-1%, 2%); }
   100% { opacity: 0.8; transform: scale(1.02) translate(1%, -1%); }
 }
-.hero-content { position: relative; z-index: 1; max-width: 780px; }
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 430px);
+  gap: 56px;
+  align-items: center;
+}
+.hero-content { max-width: 780px; }
+
+/* Hero visual: a market-share read that draws itself in, mirroring the
+   Vahan trend work described alongside it. */
+.hero-visual { width: 100%; }
+.viz { display: block; width: 100%; height: auto; overflow: visible; }
+
+.viz-grid line { stroke: var(--line); stroke-width: 1; }
+.viz-axis { stroke: var(--line-strong); stroke-width: 1.5; stroke-linecap: round; }
+.viz-bars rect { fill: var(--amber); opacity: 0.16; transform-origin: center bottom; }
+.viz-line { stroke: var(--amber); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.viz-proj { stroke: var(--amber); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 5 6; opacity: 0.55; }
+.viz-nodes circle { fill: var(--amber); stroke: var(--bg); stroke-width: 2.5; }
+.viz-pulse { fill: none; stroke: var(--amber); stroke-width: 1.5; opacity: 0; }
+.viz-stop-top { stop-color: var(--amber); stop-opacity: 0.2; }
+.viz-stop-bottom { stop-color: var(--amber); stop-opacity: 0; }
+
+/* The chart is fully drawn by default. Only where motion is welcome do the
+   parts start hidden and draw themselves in, so an animation that is paused,
+   skipped, or never started can't leave an empty frame in the hero. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .viz-grid,
+  .js .viz-area { opacity: 0; }
+  .js .viz-axis,
+  .js .viz-line,
+  .js .viz-proj { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .js .viz-bars rect { transform: scaleY(0); }
+  .js .viz-nodes circle { opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; }
+
+  body.loaded .viz-grid { animation: vizFade 0.7s ease-out 0.15s both; }
+  body.loaded .viz-axis { animation: vizDraw 0.9s ease-out 0.3s both; }
+  body.loaded .viz-bars rect { animation: vizGrow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  body.loaded .viz-bars rect:nth-child(1) { animation-delay: 0.75s; }
+  body.loaded .viz-bars rect:nth-child(2) { animation-delay: 0.85s; }
+  body.loaded .viz-bars rect:nth-child(3) { animation-delay: 0.95s; }
+  body.loaded .viz-bars rect:nth-child(4) { animation-delay: 1.05s; }
+  body.loaded .viz-bars rect:nth-child(5) { animation-delay: 1.15s; }
+  body.loaded .viz-line { animation: vizDraw 1.5s cubic-bezier(0.65, 0, 0.35, 1) 1.3s both; }
+  body.loaded .viz-area { animation: vizFade 0.9s ease-out 2.2s both; }
+  body.loaded .viz-proj { animation: vizDraw 0.6s ease-out 2.75s both; }
+  body.loaded .viz-nodes circle { animation: vizPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+  body.loaded .viz-nodes circle:nth-child(1) { animation-delay: 1.45s; }
+  body.loaded .viz-nodes circle:nth-child(2) { animation-delay: 1.72s; }
+  body.loaded .viz-nodes circle:nth-child(3) { animation-delay: 1.99s; }
+  body.loaded .viz-nodes circle:nth-child(4) { animation-delay: 2.26s; }
+  body.loaded .viz-nodes circle:nth-child(5) { animation-delay: 2.53s; }
+  body.loaded .viz-pulse { animation: vizPulse 2.6s ease-out 3.2s infinite; }
+}
+
+@keyframes vizFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes vizDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes vizGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes vizPop {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes vizPulse {
+  0% { opacity: 0.7; transform: scale(0.6); transform-origin: center; transform-box: fill-box; }
+  70% { opacity: 0; transform: scale(2.1); transform-origin: center; transform-box: fill-box; }
+  100% { opacity: 0; transform: scale(2.1); transform-origin: center; transform-box: fill-box; }
+}
 
 .hero-name {
   margin: 0 0 6px;
@@ -889,8 +957,11 @@ body.loaded .hero-buttons { transition-delay: 0.35s; }
 body.loaded .hero-microcopy { transition-delay: 0.45s; }
 
 /* ============ Responsive ============ */
+/* Below this the two hero columns crowd each other, and the chart is
+   decorative, so the copy takes the full width instead. */
 @media (max-width: 1080px) {
-  .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { grid-template-columns: 1fr; gap: 0; }
+  .hero-visual { display: none; }
 }
 
 @media (max-width: 860px) {

@@ -4,14 +4,6 @@
   /* ---------- Loader ---------- */
   var loader = document.getElementById('loader');
   function hideLoader() { if (loader) loader.classList.add('hidden'); }
-  function playLoader() {
-    if (!loader) return;
-    loader.classList.remove('hidden');
-    loader.classList.add('replay');
-    void loader.offsetWidth;
-    loader.classList.remove('replay');
-    window.setTimeout(hideLoader, 900);
-  }
   if (reduceMotion) {
     hideLoader();
     document.body.classList.add('loaded');
@@ -22,7 +14,7 @@
     }, 900);
   }
 
-  /* ---------- Logo: replay loader + scroll to top ---------- */
+  /* ---------- Logo: scroll to top ---------- */
   var logoBtn = document.getElementById('logoBtn');
   if (logoBtn) {
     logoBtn.addEventListener('click', function (e) {

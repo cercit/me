@@ -28,7 +28,6 @@
     logoBtn.addEventListener('click', function (e) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-      if (!reduceMotion) playLoader();
     });
   }
 
@@ -161,84 +160,6 @@
     });
   }
 
-  /* ---------- Public stats ---------- */
-  var statsEl = document.getElementById('stats');
-  if (statsEl && 'fetch' in window) {
-    var NS = 'cercit-me';
-    // Every request is raced against a hard timeout. A counter host that accepts
-    // the TLS handshake but never answers would otherwise leave the promise
-    // pending forever and strand the placeholder dashes on screen.
-    var api = function (key, bump) {
-      var url = 'https://abacus.jasoncameron.dev/' + (bump ? 'hit' : 'get') + '/' + NS + '/' + key;
-      var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
-      var timer = window.setTimeout(function () { if (ctrl) ctrl.abort(); }, 5000);
-      var req = fetch(url, ctrl ? { signal: ctrl.signal } : undefined).then(function (r) {
-        // A key that has never been hit 404s. That is a zero, not a failure.
-        if (r.status === 404) return 0;
-        if (!r.ok) throw new Error('bad status ' + r.status);
-        return r.json().then(function (j) {
-          return typeof j.value === 'number' ? j.value : 0;
-        });
-      });
-      var guard = new Promise(function (_, reject) {
-        window.setTimeout(function () { reject(new Error('timeout')); }, 5200);
-      });
-      return Promise.race([req, guard])
-        .then(function (v) { window.clearTimeout(timer); return v; },
-              function (e) { window.clearTimeout(timer); throw e; });
-    };
-    var paint = function (id, target) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      var final = target.toLocaleString();
-      // requestAnimationFrame does not fire in a background tab, so writing the
-      // value only from inside the animation would strand the placeholder for
-      // anyone who opens the page in a background tab. Land the real number
-      // first, then animate up to it purely as decoration.
-      el.textContent = final;
-      if (reduceMotion || document.visibilityState !== 'visible' ||
-          typeof window.requestAnimationFrame !== 'function') return;
-      var start = null;
-      var step = function (ts) {
-        if (!start) start = ts;
-        var p = Math.min((ts - start) / 900, 1);
-        el.textContent = p < 1
-          ? Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString()
-          : final;
-        if (p < 1) window.requestAnimationFrame(step);
-      };
-      window.requestAnimationFrame(step);
-    };
-
-    // One page view per browser session, so a refresh loop cannot inflate it.
-    // Storage access throws outright in some privacy modes, so treat an
-    // unavailable store as "first visit" rather than letting it break the strip.
-    var fresh = true;
-    try {
-      fresh = !sessionStorage.getItem('cercit-seen');
-      if (fresh) sessionStorage.setItem('cercit-seen', '1');
-    } catch (e) {}
-
-    Promise.all([api('views', fresh), api('resume', false), api('contact', false)])
-      .then(function (n) {
-        paint('statViews', n[0]);
-        paint('statResume', n[1]);
-        paint('statContact', n[2]);
-      })
-      .catch(function () {
-        // Counter service unreachable: hide the section rather than show
-        // placeholder dashes that read as a broken page.
-        statsEl.hidden = true;
-      });
-
-    document.querySelectorAll('a[href$="resume.pdf"]').forEach(function (a) {
-      a.addEventListener('click', function () { api('resume', true).catch(function () {}); });
-    });
-    document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
-      a.addEventListener('click', function () { api('contact', true).catch(function () {}); });
-    });
-  }
-
   /* ---------- Scroll reveal ---------- */
   if (!reduceMotion && 'IntersectionObserver' in window) {
     var revealEls = document.querySelectorAll(
@@ -262,23 +183,6 @@
     window.setTimeout(function () {
       revealEls.forEach(function (el) { el.classList.add('is-visible'); });
     }, 2600);
-  }
-
-  /* ---------- Cursor follower (desktop only) ---------- */
-  var dot = document.getElementById('cursorDot');
-  if (dot && window.matchMedia('(pointer: fine)').matches && !reduceMotion) {
-    var dx = 0, dy = 0, mx = 0, my = 0;
-    document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; dot.classList.add('visible'); });
-    document.addEventListener('mouseleave', function () { dot.classList.remove('visible'); });
-    var interactives = 'a, button, .project-card, .featured, .tab-btn, .btn-primary, .btn-outline, .resume-btn';
-    document.addEventListener('mouseover', function (e) { if (e.target.closest(interactives)) dot.classList.add('hover'); });
-    document.addEventListener('mouseout', function (e) { if (e.target.closest(interactives)) dot.classList.remove('hover'); });
-    (function tick() {
-      dx += (mx - dx) * 0.15;
-      dy += (my - dy) * 0.15;
-      dot.style.transform = 'translate(' + (dx - 4) + 'px,' + (dy - 4) + 'px)';
-      requestAnimationFrame(tick);
-    })();
   }
 
   /* ---------- Word-by-word headline reveal ---------- */

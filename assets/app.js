@@ -47,6 +47,14 @@
       });
     });
 
+    // No saved choice: keep following the device setting live
+    const deviceLight = window.matchMedia('(prefers-color-scheme: light)');
+    deviceLight.addEventListener('change', (event) => {
+      let saved = null;
+      try { saved = window.localStorage.getItem(themeStorageKey); } catch (_) {}
+      if (saved !== 'light' && saved !== 'dark') applyTheme(event.matches ? 'light' : 'dark');
+    });
+
     window.addEventListener('storage', (event) => {
       if (event.key !== themeStorageKey) return;
       if (event.newValue === 'light' || event.newValue === 'dark') {

@@ -103,3 +103,16 @@ h1 em,h2 em{font-style:normal}
 @keyframes coinDraw{to{stroke-dashoffset:0}}
 @keyframes coinLetter{to{opacity:1}}
 @keyframes loaderOut{to{opacity:0;visibility:hidden}}
+
+/* Hero layout B: name across the top, then copy and timeline side by side at equal height */
+.hero{row-gap:0;align-items:stretch}
+.hero-head{grid-column:1/-1}
+.hero-head h1{margin-bottom:28px}
+.hero-subtitle{margin-top:0}
+.hero-work{display:flex}
+.hero-journey{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-top:4px;padding-bottom:4px}
+.journey-title{margin-bottom:16px}
+.journey-list li{padding-bottom:16px}
+.journey-list strong{font-size:17px;line-height:1.4}
+.journey-list span{font-size:14px;margin-top:2px}
+@media(max-width:900px){.hero{row-gap:34px}.hero-head h1{margin-bottom:0}.hero-journey{display:block}}

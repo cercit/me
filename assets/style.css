@@ -125,5 +125,22 @@ main img:hover,main img.img-reveal{filter:none}
 [data-theme=dark] main img:hover,[data-theme=dark] main img.img-reveal{filter:brightness(.82) contrast(1.04)}
 @media(prefers-reduced-motion:reduce){main img{transition:none}}
 /* App screenshots are mostly white, so they need more darkening than photos in dark mode */
-[data-theme=dark] main .project-visual img{filter:grayscale(1) sepia(1) saturate(2.2) hue-rotate(-8deg) brightness(.4) contrast(1.15)}
-[data-theme=dark] main .project-visual img:hover,[data-theme=dark] main .project-visual img.img-reveal{filter:brightness(.66) contrast(1.06)}
+[data-theme=dark] main .visual-upi img{filter:grayscale(1) sepia(1) saturate(2.2) hue-rotate(-8deg) brightness(.4) contrast(1.15)}
+[data-theme=dark] main .visual-upi img:hover,[data-theme=dark] main .visual-upi img.img-reveal{filter:brightness(.66) contrast(1.06)}
+/* Caption sits on its own strip at the bottom of the picture box, so it never runs over the picture */
+.project-visual .visual-foot{bottom:0;left:0;right:0;z-index:1;padding:12px 20px;background:var(--warm);border-top:1px solid var(--line)}
+
+/* Each screenshot has a light and a dark version; show the one that matches the theme */
+.browser-frame img.img-dark{display:none}
+[data-theme=dark] .browser-frame img.img-dark{display:block}
+[data-theme=dark] .browser-frame img.img-light{display:none}
+/* Orange mask only on the photo of Sameer; every site screenshot keeps its own colours */
+main .visual-cercit img,main .visual-hiremate img,main .visual-coins img,main .visual-upi img{filter:none}
+[data-theme=dark] main .visual-cercit img,[data-theme=dark] main .visual-hiremate img,[data-theme=dark] main .visual-coins img{filter:none}
+[data-theme=dark] main .visual-upi img{filter:brightness(.8) contrast(1.04)}
+[data-theme=dark] main .visual-upi img:hover,[data-theme=dark] main .visual-upi img.img-reveal{filter:none}
+/* The home-page photo had an older filter:none rule that beat the mask in light mode */
+main .about-image img{filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-8deg) brightness(.92) contrast(1.02)}
+[data-theme=dark] main .about-image img{filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-8deg) brightness(.68) contrast(1.05)}
+main .about-image img:hover,main .about-image img.img-reveal{filter:none}
+[data-theme=dark] main .about-image img:hover,[data-theme=dark] main .about-image img.img-reveal{filter:brightness(.82) contrast(1.04)}

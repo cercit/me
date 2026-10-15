@@ -8,6 +8,7 @@
     "summary": "I turned my vehicle-finance experience into a working loan-review demo. It checks documents and lending rules, explains its recommendation and leaves the final decision with a credit officer.",
     "role": "I defined the product, credit policy and requirements, then reviewed and tested the build. Claude wrote most of the code.",
     "image": "cercit.jpg",
+    "image_dark": "cercit-dark.jpg",
     "alt": "cercit credit officer dashboard showing a synthetic application book and exception queue",
     "links": [
       {
@@ -153,7 +154,8 @@
     "kicker": "Interview practice for bank and NBFC jobs",
     "summary": "I designed a mock-interview concept for freshers and career switchers applying to banking roles. The work includes role-specific questions, a small survey, a clickable prototype and a pricing and launch plan.",
     "role": "I chose the audience, designed the research and defined the product and launch plan. AI tools helped develop and check the material.",
-    "image": "hiremate.png",
+    "image": "hiremate.jpg",
+    "image_dark": "hiremate-dark.jpg",
     "alt": "HireMate prototype for role-specific banking interview practice",
     "links": [
       {
@@ -295,6 +297,7 @@
     "summary": "I organised my coin collection into an interactive catalogue. A map and flag grid lead to each country, then its issuers and coins. I also record when a specimen differs from the catalogue type.",
     "role": "I curate the collection, define its organisation and correct specimen details. AI tools helped build the site and process images.",
     "image": "coins.jpg",
+    "image_dark": "coins-dark.jpg",
     "alt": "World of Coins catalogue with world-map navigation and curated exhibitions",
     "links": [
       {

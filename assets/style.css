@@ -64,3 +64,74 @@ h1 em,h2 em{font-style:normal}
 @media(max-width:1100px){.wrap{width:calc(100% - 64px)}.hero{gap:36px}.hero h1{font-size:58px}.hero-journey{padding-left:22px}.journey-list li{grid-template-columns:75px minmax(0,1fr);gap:10px}.work-in-progress{grid-template-columns:30px minmax(0,1fr)}.work-in-progress>.text-link{grid-column:2}}
 @media(max-width:900px){.wrap{width:calc(100% - 48px)}.site-header{min-height:84px}.hero{grid-template-columns:1.4fr 1fr;gap:28px;padding-block:50px 60px}.hero h1{font-size:48px}.hero-subtitle{font-size:24px}.journey-list li{display:block}.journey-list strong{margin-top:5px}.hero-journey{padding-left:20px}.section-heading{flex-direction:column;align-items:flex-start;gap:18px}.section-heading>.text-link{align-self:flex-start}.about-preview{gap:40px}.about-preview h2,.section-heading h2{font-size:38px}.project-meta{flex-wrap:wrap}.work-grid .flow>span,.work-grid .data-join>span{font-size:16px;line-height:1.4}.work-grid .flow small,.work-grid .data-join small{font-size:14px}.work-grid .note-map{flex-wrap:wrap}.work-grid .note-map strong{width:100%;height:auto;order:-1;border-radius:5px;padding:12px}.work-grid .note-connector{display:none}.work-grid .note-node{font-size:15px;max-width:none;flex:1}.work-grid .paper b{font-size:14px}.work-grid .paper>span,.work-grid .paper em{font-size:14px}.work-grid .paper{width:45%;height:auto;min-height:210px}.work-grid .paper-arrow{display:none}.work-grid .local-label{font-size:14px}.work-grid .project-visual{height:auto;min-height:310px}.career-grid{gap:0 30px}.case-layout{gap:32px}.case-sidebar nav{grid-template-columns:1fr 1fr}.contact-top h2{font-size:45px}}
 @media(max-width:640px){body{font-size:17px}.wrap{width:calc(100% - 40px)}.site-header{min-height:78px}.monogram{font-size:26px}.hero{grid-template-columns:1fr;gap:34px;padding-block:40px 52px}.hero h1{font-size:clamp(39px,10.7vw,62px);line-height:1.07}.hero .eyebrow{font-size:14px;line-height:1.6}.hero-subtitle{font-size:23px;line-height:1.4}.hero-intro{font-size:18px}.hero-actions .text-link{font-size:16px}.hero-context{font-size:15px}.hero-journey{border-left:0;border-top:1px solid var(--line);padding:28px 0 0}.journey-list li{display:grid;grid-template-columns:80px minmax(0,1fr);gap:12px;margin-left:5px;padding-left:16px}.journey-list strong{margin-top:0}.about-preview{grid-template-columns:1fr;padding-block:50px;gap:28px}.about-image{max-width:280px;margin:0}.about-preview h2,.section-heading h2{font-size:34px;max-width:none;line-height:1.15}.about-preview p:not(.eyebrow){font-size:17px}.career-grid{grid-template-columns:1fr}.career-section,.selected-work{padding-block:50px}.career-grid article>p:not(.career-date){font-size:17px}.career-grid h3{font-size:25px}.section-intro{font-size:17px}.section-heading .eyebrow{font-size:14px}.secondary-projects{grid-template-columns:1fr}.card-copy h3,.feature-card h3{font-size:29px}.card-copy .card-kicker,.feature-card .card-kicker{font-size:21px}.card-copy>p{font-size:17px}.project-meta,.status{font-size:14px}.browser-bar>span:first-child,.browser-bar>span:last-child{display:none}.project-visual{padding-bottom:65px}.work-in-progress{grid-template-columns:1fr;gap:0;padding-block:24px 52px}.wip-index{display:none}.work-in-progress>.text-link{grid-column:auto;margin-top:20px}.work-in-progress .eyebrow{font-size:14px;gap:12px}.work-in-progress p:not(.eyebrow){font-size:17px}.contact-top h2{font-size:37px}.contact-top p{font-size:17px}.contact-top .eyebrow{font-size:14px}.contact-bottom nav{font-size:16px;gap:20px}.footer-fine{font-size:14px;flex-direction:column;gap:10px}.copy-button{font-size:16px}.copy-status{font-size:14px}.email-link{font-size:23px}.page-intro h1{font-size:54px}.page-intro>p:last-child{font-size:18px}.filter-buttons{justify-content:flex-start;gap:4px}.filter-buttons button{font-size:16px;padding:9px 12px}.work-count{font-size:15px}.work-grid{grid-template-columns:1fr}.work-grid .project-visual{height:auto;min-height:310px}.flow,.data-join,.case-visual .flow,.case-visual .data-join{flex-direction:column;gap:10px;width:100%}.flow>span,.data-join>span,.work-grid .flow>span,.work-grid .data-join>span,.case-visual .flow>span,.case-visual .data-join>span{width:100%;min-width:0;font-size:18px;padding:16px}.flow>b,.data-join>b{transform:rotate(90deg);line-height:1}.flow small,.data-join small,.work-grid .flow small,.work-grid .data-join small,.case-visual .flow small,.case-visual .data-join small{font-size:14px}.diagram-kicker,.work-grid .diagram-kicker,.case-visual .diagram-kicker{font-size:25px}.note-map,.case-visual .note-map{flex-wrap:wrap;gap:12px}.note-map strong,.work-grid .note-map strong,.case-visual .note-map strong{width:100%;height:auto;border-radius:5px;padding:14px;order:-1;font-size:23px}.note-node,.work-grid .note-node,.case-visual .note-node{max-width:none;flex:1;font-size:16px;padding:14px}.note-connector{display:none}.paper-pair,.case-visual .paper-pair{gap:14px}.paper-arrow{display:none}.paper,.work-grid .paper,.case-visual .paper{width:46%;height:auto;min-height:230px;padding:14px}.paper b,.work-grid .paper b,.case-visual .paper b{font-size:16px}.paper>span,.paper em,.work-grid .paper>span,.work-grid .paper em,.case-visual .paper>span,.case-visual .paper em{font-size:14px}.visual-foot,.local-label,.work-grid .local-label,.case-visual .local-label,.case-visual .flow-review{font-size:14px}.about-hero{grid-template-columns:1fr}.about-hero p:not(.eyebrow),.career-list p,.education p,.approach-grid>div>p:not(.eyebrow),.offscreen>p:not(.eyebrow){font-size:17px}.about-hero p.lede{font-size:25px}.about-section,.approach-grid{grid-template-columns:1fr}.case-summary,.case-section p,.contribution p{font-size:17px;line-height:1.8}.case-deck{font-size:25px}.case-intro{font-size:21px}.case-section h2{font-size:29px}.case-facts dt{font-size:14px}.case-facts dd{font-size:16px;overflow-wrap:anywhere}.case-sidebar nav{grid-template-columns:1fr}.case-sidebar nav a{font-size:16px}.case-actions .button{font-size:16px;padding:12px 16px}.case-hero h1{font-size:44px;overflow-wrap:anywhere}.supplemental-image figcaption{font-size:14px}.next-project p:not(.eyebrow){font-size:17px}}
+
+/* Hero chart */
+.hero-chart{margin-bottom:26px}
+.viz{display:block;width:100%;height:auto;max-height:170px;overflow:visible}
+.hero-chart-note{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+.viz-grid line{stroke:var(--line);stroke-width:1}
+.viz-axis{stroke:var(--line);stroke-width:1.5;stroke-linecap:round}
+.viz-bars rect{fill:var(--green);opacity:.16;transform-box:fill-box;transform-origin:center bottom}
+.viz-line{stroke:var(--green);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.viz-proj{stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-dasharray:5 6;opacity:.55}
+.viz-nodes circle{fill:var(--green);stroke:var(--canvas);stroke-width:2.5;transform-box:fill-box;transform-origin:center}
+.viz-pulse{fill:none;stroke:var(--green);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.viz-stop-top{stop-color:var(--green);stop-opacity:.2}
+.viz-stop-bottom{stop-color:var(--green);stop-opacity:0}
+@media(max-width:900px){.viz{max-height:150px}.hero-chart{margin-bottom:20px}}
+
+/* Motion. Everything is fully drawn and visible by default. Only where motion
+   is welcome, and only after app.js adds .enhanced, do parts start hidden. */
+@keyframes vizFade{from{opacity:0}to{opacity:1}}
+@keyframes vizProj{from{opacity:0}to{opacity:.55}}
+@keyframes vizDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes vizGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes vizPop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+@keyframes vizPulse{0%{opacity:.7;transform:scale(.6)}70%,100%{opacity:0;transform:scale(2.1)}}
+@keyframes lineDown{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes stepIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:no-preference){
+  .enhanced .viz-grid,.enhanced .viz-area{opacity:0}
+  .enhanced .viz-axis,.enhanced .viz-line{stroke-dasharray:1;stroke-dashoffset:1}
+  .enhanced .viz-proj{opacity:0}
+  .enhanced .viz-bars rect{transform:scaleY(0)}
+  .enhanced .viz-nodes circle{opacity:0;transform:scale(0)}
+  .enhanced .viz-grid{animation:vizFade .5s ease-out .1s both}
+  .enhanced .viz-axis{animation:vizDraw .7s ease-out .15s both}
+  .enhanced .viz-bars rect{animation:vizGrow .6s cubic-bezier(.22,1,.36,1) both}
+  .enhanced .viz-bars rect:nth-child(1){animation-delay:.45s}
+  .enhanced .viz-bars rect:nth-child(2){animation-delay:.52s}
+  .enhanced .viz-bars rect:nth-child(3){animation-delay:.59s}
+  .enhanced .viz-bars rect:nth-child(4){animation-delay:.66s}
+  .enhanced .viz-bars rect:nth-child(5){animation-delay:.73s}
+  .enhanced .viz-line{animation:vizDraw 1s cubic-bezier(.65,0,.35,1) .7s both}
+  .enhanced .viz-area{animation:vizFade .8s ease-out 1.3s both}
+  .enhanced .viz-proj{animation:vizProj .5s ease-out 1.7s both}
+  .enhanced .viz-nodes circle{animation:vizPop .4s cubic-bezier(.34,1.56,.64,1) both}
+  .enhanced .viz-nodes circle:nth-child(1){animation-delay:.85s}
+  .enhanced .viz-nodes circle:nth-child(2){animation-delay:1.05s}
+  .enhanced .viz-nodes circle:nth-child(3){animation-delay:1.25s}
+  .enhanced .viz-nodes circle:nth-child(4){animation-delay:1.45s}
+  .enhanced .viz-nodes circle:nth-child(5){animation-delay:1.65s}
+  .enhanced .viz-pulse{animation:vizPulse 2.6s ease-out 2.2s infinite}
+
+  /* Timeline: the line draws down, then each step fades in */
+  @media(min-width:901px){
+    .enhanced .hero-journey{position:relative;border-left-color:transparent}
+    .enhanced .hero-journey:before{content:'';position:absolute;left:-1px;top:0;bottom:0;width:1px;background:var(--line);transform-origin:top;animation:lineDown 1s cubic-bezier(.65,0,.35,1) .3s both}
+  }
+  .enhanced .journey-list li{animation:stepIn .5s ease-out both}
+  .enhanced .journey-list li:nth-child(1){animation-delay:.6s}
+  .enhanced .journey-list li:nth-child(2){animation-delay:.75s}
+  .enhanced .journey-list li:nth-child(3){animation-delay:.9s}
+  .enhanced .journey-list li:nth-child(4){animation-delay:1.05s}
+
+  /* Scroll reveal, added by app.js and removed again once shown */
+  .reveal{opacity:0;transform:translateY(18px)}
+  .reveal.is-visible{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms),transform .7s cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms)}
+
+  /* Card lift */
+  .project-card{transition:transform .25s ease}
+  .project-card:hover{transform:translateY(-2px)}
+}

@@ -489,7 +489,7 @@
         "title": "A small build with a PRD",
         "paragraphs": [
           "Snakes and Ladders is a one-file browser game for 2 to 4 players, with an optional computer player. It has 10 snakes and 9 ladders, an exact roll is needed to finish, and a 6 gives another turn.",
-          "I wrote the PRD first and used GitHub Copilot for the build. It is a learning exercise to see how far an idea can go from a document to something playable."
+          "The game comes with a PRD, and I used GitHub Copilot for the build. The repo lists what I tested, including snake and ladder jumps, the overshoot rule and a full four-player game."
         ]
       }
     ],

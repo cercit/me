@@ -325,8 +325,51 @@
     });
   }
 
+  function initReveal() {
+    const motionOk = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (!motionOk || !('IntersectionObserver' in window)) return;
+
+    const targets = [...document.querySelectorAll([
+      '.selected-work .section-heading', '.selected-work .project-card',
+      '.about-preview', '.career-section .section-heading', '.career-grid article',
+      '.about-section', '.approach-section', '.offscreen', '.education',
+      '.work-grid .project-card', '.case-facts', '.case-section', '.next-project',
+      '.contact-top'
+    ].join(','))];
+    if (!targets.length) return;
+
+    targets.forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
+    });
+
+    // The class is only needed while the element fades in. Removing it
+    // afterwards leaves hover and filter styles to the normal rules.
+    function settle(el) {
+      el.classList.remove('reveal', 'is-visible');
+      el.style.removeProperty('--reveal-delay');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        observer.unobserve(el);
+        el.classList.add('is-visible');
+        window.setTimeout(() => settle(el), 1200);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach((el) => observer.observe(el));
+
+    // Safety net: if the observer never fires, nothing stays hidden.
+    window.setTimeout(() => {
+      targets.forEach((el) => { observer.unobserve(el); settle(el); });
+    }, 4000);
+  }
+
   function init() {
     initTheme();
+    initReveal();
     initMenu();
     initWorkFilters();
     initCopyEmail();

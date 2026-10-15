@@ -120,6 +120,8 @@ def local_target(source, url):
     if parts.scheme or parts.netloc:
         return None, ""
     decoded_path = unquote(parts.path)
+    if decoded_path == "/me" or decoded_path.startswith("/me/"):
+        decoded_path = decoded_path[3:] or "/"  # GitHub Pages serves this repo under /me/
     if decoded_path.startswith("/"):
         target = SITE / decoded_path.lstrip("/")
     elif decoded_path:

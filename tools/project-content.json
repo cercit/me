@@ -359,11 +359,19 @@
     "category": "analytics",
     "status": "Analytics project",
     "kicker": "Join cricket performance with squad and auction data",
-    "summary": "I worked on a WPL dataset linking match performance, squads and auction records across seasons. The package includes analysis notebooks and a data dictionary explaining player identities, joins and missing values.",
-    "role": "I defined analysis questions and reviewed the dataset structure and source matching. AI tools helped with processing and notebook development.",
+    "summary": "I published a WPL dataset on Kaggle that links match performance, squads and auction records across seasons. A public notebook uses it to ask who was worth the money.",
+    "role": "I defined the analysis questions and reviewed the dataset structure and the source matching. AI tools helped with processing and with building the notebook.",
     "image": "",
     "alt": "",
     "links": [
+      {
+        "label": "Kaggle dataset",
+        "url": "https://www.kaggle.com/datasets/cercit/womens-premier-league-complete-dataset-20232026"
+      },
+      {
+        "label": "Kaggle notebook",
+        "url": "https://www.kaggle.com/code/cercit/wpl-2023-2026-records-and-who-was-worth-the-money"
+      },
       {
         "label": "Ball-by-ball data source",
         "url": "https://cricsheet.org/"
@@ -375,25 +383,25 @@
         "value": "2023–2026 seasons"
       },
       {
-        "label": "Data package",
-        "value": "8 tables and a dictionary"
+        "label": "Dataset",
+        "value": "9 CSV files, public on Kaggle"
       },
       {
-        "label": "Outputs",
-        "value": "Notebook and workbook"
+        "label": "Licence",
+        "value": "ODC-By"
       },
       {
-        "label": "Current stage",
-        "value": "Local dataset and analysis"
+        "label": "Notebook",
+        "value": "Public, with 11 charts"
       }
     ],
-    "intro": "This project connects WPL scorecards with squad and auction data. The aim is to make questions about spending and performance possible using tables that can be joined consistently.",
+    "intro": "This project connects WPL scorecards with squad and auction data. The aim is to make questions about spending and performance possible using tables that join consistently. The dataset and the notebook are both public.",
     "sections": [
       {
         "title": "Connect the records",
         "paragraphs": [
-          "The local package has eight data tables and a dictionary. Match IDs connect deliveries and scorecards; season, team and player identifiers connect those records to squads.",
-          "The documented scope covers the 2023–2026 seasons. Processing scripts, a notebook and an insights workbook are saved locally."
+          "The dataset has nine CSV files, published on Kaggle under the ODC-By licence. Match IDs connect deliveries and scorecards. Season, team and player identifiers connect those records to squads.",
+          "The documented scope covers the 2023–2026 seasons. Anyone can download the files and rebuild the joins."
         ]
       },
       {
@@ -411,10 +419,10 @@
         ]
       },
       {
-        "title": "Presenting the analysis",
+        "title": "The notebook and its charts",
         "paragraphs": [
-          "The current work is a local dataset and analysis package. A useful portfolio addition would be a short set of charts answering one question, with the joins and sample sizes beside the findings.",
-          "For example, squad spend can be compared with season points. The result still needs to account for the small number of teams and seasons."
+          "The public notebook, \"WPL 2023–2026 records and who was worth the money\", has 11 charts. Each one sits beside the joins and sample sizes behind it.",
+          "One question is how squad spend compares with results. The answer still has to allow for the small number of teams and seasons."
         ]
       }
     ],

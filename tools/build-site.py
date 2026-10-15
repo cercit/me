@@ -79,8 +79,8 @@ about = '''<section class="about-hero wrap"><div><p class="eyebrow">About me</p>
 
 for n,p in enumerate(PROJECTS):
     facts = ''.join(f'<div><dt>{e(f["label"])}</dt><dd>{e(f["value"])}</dd></div>' for f in p['facts'])
-    links = '' if p['slug'] == 'wpl' else actions(p['links'],'button button-secondary')
-    source_note = '<p class="case-summary">Data source: <a class="text-link" href="https://cricsheet.org/">Cricsheet ball-by-ball records ↗</a>. My dataset and analysis are currently local.</p>' if p['slug'] == 'wpl' else ''
+    links = actions(p['links'],'button button-secondary')
+    source_note = ''
     toc = ''.join(f'<a href="#section-{i}"><span>{i:02}</span>{e(s["title"])}</a>' for i,s in enumerate(p['sections'],1))
     sections = ''.join(f'<section id="section-{i}" class="case-section"><span class="section-number">{i:02}</span><h2>{e(s["title"])}</h2>'+''.join(f'<p>{e(text)}</p>' for text in s['paragraphs'])+'</section>' for i,s in enumerate(p['sections'],1))
     nextp = PROJECTS[(n+1)%len(PROJECTS)]

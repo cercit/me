@@ -427,5 +427,72 @@
       }
     ],
     "featured": false
+  },
+  {
+    "slug": "pm-portfolio",
+    "title": "PM Portfolio",
+    "category": "product",
+    "status": "Coursework",
+    "kicker": "Course deliverables from my product management programme",
+    "summary": "These are the practice deliverables from my product management course. Five sessions are published so far, from an infographic to a small game with a PRD.",
+    "role": "I did each exercise and wrote it up. These are course deliverables from the Masai x iHUB DivyaSampark IIT Roorkee programme. They are not products I shipped or work from my job.",
+    "image": "",
+    "alt": "",
+    "links": [
+      {
+        "label": "PM Portfolio on GitHub",
+        "url": "https://github.com/cercit/PM-Portfolio"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Programme",
+        "value": "Masai x iHUB DivyaSampark IIT Roorkee"
+      },
+      {
+        "label": "Period",
+        "value": "July to August 2026"
+      },
+      {
+        "label": "Published",
+        "value": "5 sessions"
+      },
+      {
+        "label": "Nature",
+        "value": "Course deliverables"
+      }
+    ],
+    "intro": "This repo holds the exercises I did for my product management course. They are practice pieces. I publish them so I can show how I think, and so I can look back at what I learned.",
+    "sections": [
+      {
+        "title": "What is in the repo",
+        "paragraphs": [
+          "Each published session has its own folder. Session 1, PM with AI, is a PM ecosystem infographic. Session 2, Day in the life, is an infographic on a product manager's day at Cars24.",
+          "Session 3, Research methods, is a one-page research plan for Blinkit cart abandonment. Session 4, User interviews, is an AI research prompt tried on Xbox Game Pass. Session 11, GitHub Copilot, is a Snakes and Ladders game with a PRD."
+        ]
+      },
+      {
+        "title": "Reading the data first",
+        "paragraphs": [
+          "The research session changed how I would start. Secondary research comes before primary research, because existing data tells you who to talk to and what to ask.",
+          "It also taught me that what users say and what users do can differ. My Blinkit plan puts secondary data first, then a hypothesis, then a defined group of users. It uses two methods, set up so that a negative result would change the decision."
+        ]
+      },
+      {
+        "title": "Letting AI draft the questions",
+        "paragraphs": [
+          "For the interview session I ran a structured prompt on Xbox Game Pass. The AI first played back its read of the customer and the journey, and I corrected it. Only then did it draft research questions.",
+          "It flagged some of its own questions as leading, such as one that assumed playing through Game Pass is difficult, and rewrote them. The prompt gave me a competent first draft. The judgement was still mine to apply."
+        ]
+      },
+      {
+        "title": "A small build with a PRD",
+        "paragraphs": [
+          "Snakes and Ladders is a one-file browser game for 2 to 4 players, with an optional computer player. It has 10 snakes and 9 ladders, an exact roll is needed to finish, and a 6 gives another turn.",
+          "I wrote the PRD first and used GitHub Copilot for the build. It is a learning exercise to see how far an idea can go from a document to something playable."
+        ]
+      }
+    ],
+    "featured": false
   }
 ]

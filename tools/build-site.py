@@ -48,6 +48,8 @@ def visual(p, prefix='', mode=''):
         return f'<div class="project-visual visual-{slug} {mode}"><div class="browser-frame"><div class="browser-bar"><span aria-hidden="true">● ● ●</span><span>{e(bar)}</span><span aria-hidden="true">↗</span></div><img src="{prefix}assets/images/{p["image"]}" alt="{e(p["alt"])}" {loading} width="{width}" height="{height}"></div><span class="visual-foot">{e(caption)}</span></div>'
     if slug == 'pagefit':
         inner = '<div class="paper-pair"><div class="paper paper-before"><span>Before</span><b>Study notes</b><i></i><i></i><i></i><i></i><em>Stranded heading</em></div><span class="paper-arrow" aria-hidden="true">→</span><div class="paper paper-after"><span>After</span><b>Study notes</b><i></i><i></i><i></i><i></i><b>Next section</b><i></i><i></i><i></i></div></div>'
+    elif slug == 'pm-portfolio':
+        inner = '<span class="diagram-kicker">Five course sessions, five deliverables.</span><div class="flow"><span>Learn<br><small>Session notes</small></span><b aria-hidden="true">→</b><span>Apply<br><small>A real product</small></span><b aria-hidden="true">→</b><span>Publish<br><small>One piece each</small></span></div><div class="local-label">Course deliverables · Masai x iHUB DivyaSampark IIT Roorkee</div>'
     elif slug == 'coins':
         inner = '<div class="coin-illustration" aria-hidden="true"><div class="coin">1<span>COLLECTION</span></div><div class="coin coin-small">½<span>STORIES IN METAL</span></div></div><div class="collection-path">Country <span>›</span> Issuer <span>›</span> Ruling authority</div>'
     else:

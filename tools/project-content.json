@@ -289,6 +289,74 @@
     "featured": false
   },
   {
+    "slug": "samsmind",
+    "title": "SamsMind",
+    "category": "tools",
+    "status": "Live site",
+    "kicker": "A public map of notes from my second brain",
+    "summary": "I built a personal system to capture notes, file them and ask questions of them. A public slice of 47 notes I chose to share is live as a map you can search and read.",
+    "role": "I defined the note workflow, privacy rules and filing areas, chose which notes to share, then reviewed the implementation built with AI tools.",
+    "image": "samsmind.jpg",
+    "image_dark": "samsmind-dark.jpg",
+    "alt": "SamsMind public notes shown as a map of connected dots, coloured by Projects, Areas, Resources and Archives",
+    "links": [
+      {
+        "label": "Open the notes map",
+        "url": "https://cercit.github.io/samsmind/"
+      },
+      {
+        "label": "View code",
+        "url": "https://github.com/cercit/samsmind"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Public notes",
+        "value": "47, chosen by me"
+      },
+      {
+        "label": "Shown as",
+        "value": "A searchable map"
+      },
+      {
+        "label": "Private app",
+        "value": "Runs on my laptop"
+      }
+    ],
+    "intro": "SamsMind brings capture, filing, search and questions into one workflow on my laptop. The public site shows only the notes I approved for sharing.",
+    "sections": [
+      {
+        "title": "Use the areas I already have",
+        "paragraphs": [
+          "A saved note receives an ID and timestamp. The filing step chooses from my existing areas (Projects, Areas, Resources, Archives) instead of creating new categories each time.",
+          "I can find a note through search or a map of connected notes. Both open the same saved material."
+        ]
+      },
+      {
+        "title": "Answer with the source attached",
+        "paragraphs": [
+          "The question feature cites the notes used in its answer. A notes-only setting tells it to say when the answer is missing.",
+          "If an answer includes general knowledge, that part is labelled separately so I can tell it apart from my saved notes."
+        ]
+      },
+      {
+        "title": "Decide where the data goes",
+        "paragraphs": [
+          "Personal notes use local processing. If that route is unavailable, they wait rather than being sent to a cloud model.",
+          "The public site is a separate export of notes I marked shareable. The private collection and the app itself stay on my laptop."
+        ]
+      },
+      {
+        "title": "The public map",
+        "paragraphs": [
+          "Each dot is a note and lines join related notes. You can hover to preview, click to read, or search.",
+          "It is read-only. Capture, sorting, linking and questions run only in the private app."
+        ]
+      }
+    ],
+    "featured": false
+  },
+  {
     "slug": "coins",
     "title": "World of Coins",
     "category": "personal",

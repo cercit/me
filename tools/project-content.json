@@ -225,68 +225,6 @@
     "featured": true
   },
   {
-    "slug": "dealerfinance",
-    "title": "DealerFinance / FinStack",
-    "category": "product",
-    "status": "In progress",
-    "kicker": "Dealer-assisted loan routing, still being built",
-    "summary": "Aditya and I are working on a dealer tool to compare lender fit and track loan files. I defined lending decisions and drew the journey. The wireframes are ready; a lot of implementation remains.",
-    "role": "I worked on lending rules, the customer journey, wireframes and handover. Aditya Sharan owns the PRD and sprint plan.",
-    "image": "",
-    "alt": "",
-    "links": [],
-    "facts": [
-      {
-        "label": "Stage",
-        "value": "Build in progress"
-      },
-      {
-        "label": "Primary user",
-        "value": "Dealer finance team"
-      },
-      {
-        "label": "Team",
-        "value": "Sameer and Aditya"
-      },
-      {
-        "label": "Current evidence",
-        "value": "Wireframes and decisions log"
-      }
-    ],
-    "intro": "DealerFinance is an ongoing team project with Aditya Sharan for the FinStack hackathon. We are designing a tool for dealer finance coordinators who need to choose a lender and follow a customer's loan file.",
-    "sections": [
-      {
-        "title": "The dealer's problem",
-        "paragraphs": [
-          "A dealer may work with several lenders. When one rejects a customer, the coordinator has to choose another, resend information and chase the status.",
-          "I mapped a proposed journey beginning with the car enquiry and consent. It checks lender fit, asks for required information and sends exceptions to a review queue."
-        ]
-      },
-      {
-        "title": "A ranking decision we changed",
-        "paragraphs": [
-          "An early version gave priority to lenders offering the dealer a trade advance. We changed that order to put customer fit, customer preference and EMI first.",
-          "Commission, lender speed and available trade advance remain visible as tags and tie-breakers. A coordinator choosing below the top fit must record why."
-        ]
-      },
-      {
-        "title": "The work so far",
-        "paragraphs": [
-          "I prepared the lending decisions, low-fidelity screens, wireflow and handover. The wireflow shows who owns each step, what information it needs and where a case can exit.",
-          "Aditya owns the PRD and sprint plan. These documents are our working handover for the platform build."
-        ]
-      },
-      {
-        "title": "What remains",
-        "paragraphs": [
-          "The project is unfinished. We still need to complete the core enquiry-to-send journey and test cases where consent is missing, credit data is unavailable or manual review is required.",
-          "The bureau-access arrangement also needs resolution before using real customer data. The completed platform build is not yet the evidence shown here."
-        ]
-      }
-    ],
-    "featured": false
-  },
-  {
     "slug": "pagefit",
     "title": "pagefit",
     "category": "tools",
@@ -343,64 +281,6 @@
         "title": "Checking more document types",
         "paragraphs": [
           "Long tables, quotations and illustrated pages need different checks. A useful next test set would compare page count with the actual reading experience, including broken tables and stranded headings."
-        ]
-      }
-    ],
-    "featured": false
-  },
-  {
-    "slug": "samsmind",
-    "title": "SamsMind",
-    "category": "tools",
-    "status": "Local tool",
-    "kicker": "Capture notes, find them and ask questions",
-    "summary": "I designed a local system to save notes, file them into my own areas and find related ideas. Answers link back to source notes. Sharing uses a separate export of items I approve.",
-    "role": "I defined the note workflow, privacy rules and filing areas, then reviewed the implementation built with AI tools.",
-    "image": "",
-    "alt": "",
-    "links": [],
-    "facts": [
-      {
-        "label": "Workspace",
-        "value": "Local capture and search"
-      },
-      {
-        "label": "Answers",
-        "value": "Cite matching notes"
-      },
-      {
-        "label": "Public export",
-        "value": "Built, unpublished"
-      }
-    ],
-    "intro": "SamsMind brings capture, filing, search and questions into one local workflow. I defined how it should organise my notes and which material can be processed or shared.",
-    "sections": [
-      {
-        "title": "Use the areas I already have",
-        "paragraphs": [
-          "A saved note receives an ID and timestamp. The filing step chooses from my existing areas instead of creating new categories each time.",
-          "I can find a note through search or a map of connected notes. Both open the same saved material."
-        ]
-      },
-      {
-        "title": "Answer with the source attached",
-        "paragraphs": [
-          "The question feature cites the notes used in its answer. A notes-only setting tells it to say when the answer is missing.",
-          "If an answer includes general knowledge, that part is labelled separately so I can tell it apart from my saved notes."
-        ]
-      },
-      {
-        "title": "Decide where the data goes",
-        "paragraphs": [
-          "Personal notes use local processing. If that route is unavailable, they wait rather than being sent to a cloud model.",
-          "A public export includes only approved, shareable notes. The private collection and working files remain separate."
-        ]
-      },
-      {
-        "title": "Current state",
-        "paragraphs": [
-          "Capture, organisation, the map and questions are built locally. The public export is also built, but remains unpublished.",
-          "A public demonstration would use invented notes to show the workflow and its source citations."
         ]
       }
     ],

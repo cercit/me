@@ -144,3 +144,7 @@ main .about-image img{filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-8de
 [data-theme=dark] main .about-image img{filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-8deg) brightness(.68) contrast(1.05)}
 main .about-image img:hover,main .about-image img.img-reveal{filter:none}
 [data-theme=dark] main .about-image img:hover,[data-theme=dark] main .about-image img.img-reveal{filter:brightness(.82) contrast(1.04)}
+
+/* Contact: one Email me button, address shown once as plain text for anyone without a mail app */
+.email-group{flex-wrap:wrap;gap:16px}
+.email-plain{font-size:15px;color:var(--muted);user-select:all}

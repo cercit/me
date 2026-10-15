@@ -97,7 +97,7 @@ for n,p in enumerate(PROJECTS):
     (SITE / 'projects' / f'{p["slug"]}.html').write_text(page(p['title'],p['summary'],body,'work','../'),encoding='utf-8')
 
 error = '<section class="not-found wrap"><p class="eyebrow">404</p><h1>Page not found.</h1><p>Check the address, or head back to the projects.</p><div class="hero-actions"><a class="button" href="index.html">Go home <span aria-hidden="true">→</span></a><a class="text-link" href="work.html">Browse all work <span aria-hidden="true">↗</span></a></div></section>'
-(SITE / '404.html').write_text(page('Page not found','Find your way back to the portfolio of Sameer Mittimani.',error,base='/me/'),encoding='utf-8')
+(SITE / '404.html').write_text(page('Page not found','Find your way back to the portfolio of Sameer Mittimani.',error,base='https://samsm.vercel.app/'),encoding='utf-8')
 (SITE / 'assets' / 'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0a0a0f"/><text x="8" y="44" font-family="Arial,sans-serif" font-size="36" fill="#f59e0b">sm</text><circle cx="55" cy="45" r="3" fill="#f59e0b"/></svg>',encoding='utf-8')
 print(f'Built {len(PROJECTS)+4} pages in {SITE}')
 

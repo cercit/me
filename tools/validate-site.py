@@ -18,7 +18,7 @@ from urllib.request import Request, urlopen
 
 
 WORKSPACE = Path(__file__).resolve().parent
-SITE = WORKSPACE / "site"
+SITE = WORKSPACE.parent
 REPORT = WORKSPACE / "static-test-results.json"
 CSS_URL = re.compile(r"url\(\s*(?:\"([^\"]*)\"|'([^']*)'|([^)]*?))\s*\)", re.IGNORECASE)
 
@@ -243,7 +243,7 @@ def run_checks(base_url):
     html_files = sorted(SITE.rglob("*.html"))
 
     if not (SITE / "index.html").is_file():
-        failures.append({"file": "index.html", "line": 1, "check": "missing_entry", "detail": "The site/index.html entry page has not been generated."})
+        failures.append({"file": "index.html", "line": 1, "check": "missing_entry", "detail": "The index.html entry page has not been generated."})
 
     for path in html_files:
         document = Document(path.resolve())

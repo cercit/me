@@ -2,11 +2,11 @@ from pathlib import Path
 import json
 from html import escape as e
 
-ROOT = Path(__file__).resolve().parent
-SITE = ROOT / 'site'
+TOOLS = Path(__file__).resolve().parent
+SITE = TOOLS.parent
 SITE.mkdir(exist_ok=True)
 (SITE / 'projects').mkdir(exist_ok=True)
-PROJECTS = json.loads((ROOT / 'project-content.json').read_text(encoding='utf-8-sig'))
+PROJECTS = json.loads((TOOLS / 'project-content.json').read_text(encoding='utf-8-sig'))
 P = {p['slug']: p for p in PROJECTS}
 
 ARROW = '<span aria-hidden="true">↗</span>'

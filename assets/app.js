@@ -375,7 +375,22 @@
     }, 4000);
   }
 
+  function initImageReveal() {
+    if (!window.matchMedia('(hover: none)').matches) return;
+    let shown = null;
+    document.querySelectorAll('main img').forEach((img) => {
+      img.addEventListener('click', (event) => {
+        // First tap shows the picture; a second tap follows any link around it
+        if (img !== shown && img.closest('a')) event.preventDefault();
+        if (shown && shown !== img) shown.classList.remove('img-reveal');
+        img.classList.toggle('img-reveal', img !== shown);
+        shown = img === shown ? null : img;
+      });
+    });
+  }
+
   function init() {
+    initImageReveal();
     initTheme();
     initReveal();
     initMenu();

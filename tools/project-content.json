@@ -1,14 +1,14 @@
 [
   {
     "slug": "cercit",
-    "title": "CERCIT",
+    "title": "cercit",
     "category": "product",
     "status": "Working demo",
     "kicker": "Credit review for salaried car loans",
     "summary": "I turned my vehicle-finance experience into a working loan-review demo. It checks documents and lending rules, explains its recommendation and leaves the final decision with a credit officer.",
     "role": "I defined the product, credit policy and requirements, then reviewed and tested the build. Claude wrote most of the code.",
     "image": "cercit.jpg",
-    "alt": "CERCIT credit officer dashboard showing a synthetic application book and exception queue",
+    "alt": "cercit credit officer dashboard showing a synthetic application book and exception queue",
     "links": [
       {
         "label": "Try the demo",
@@ -37,7 +37,7 @@
         "value": "Product and credit policy"
       }
     ],
-    "intro": "I have worked in vehicle finance since 2014. CERCIT applies that experience to a loan-review system: what information to collect, which rules to check and what an officer needs before deciding a case.",
+    "intro": "I have worked in vehicle finance since 2014. cercit applies that experience to a loan-review system: what information to collect, which rules to check and what an officer needs before deciding a case.",
     "sections": [
       {
         "title": "The loan file",

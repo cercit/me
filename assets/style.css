@@ -116,3 +116,14 @@ h1 em,h2 em{font-style:normal}
 .journey-list strong{font-size:17px;line-height:1.4}
 .journey-list span{font-size:14px;margin-top:2px}
 @media(max-width:900px){.hero{row-gap:34px}.hero-head h1{margin-bottom:0}.hero-journey{display:block}}
+
+/* Pictures: amber mask at rest, normal colour on hover (PC) or tap (phone).
+   Only the image itself changes, never the card or browser frame around it. */
+main img{filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-8deg) brightness(.92) contrast(1.02);transition:filter .45s ease}
+[data-theme=dark] main img{filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-8deg) brightness(.68) contrast(1.05)}
+main img:hover,main img.img-reveal{filter:none}
+[data-theme=dark] main img:hover,[data-theme=dark] main img.img-reveal{filter:brightness(.82) contrast(1.04)}
+@media(prefers-reduced-motion:reduce){main img{transition:none}}
+/* App screenshots are mostly white, so they need more darkening than photos in dark mode */
+[data-theme=dark] main .project-visual img{filter:grayscale(1) sepia(1) saturate(2.2) hue-rotate(-8deg) brightness(.4) contrast(1.15)}
+[data-theme=dark] main .project-visual img:hover,[data-theme=dark] main .project-visual img.img-reveal{filter:brightness(.66) contrast(1.06)}

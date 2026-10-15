@@ -1,0 +1,543 @@
+[
+  {
+    "slug": "cercit",
+    "title": "CERCIT",
+    "category": "product",
+    "status": "Working demo",
+    "kicker": "Credit review for salaried car loans",
+    "summary": "I turned my vehicle-finance experience into a working loan-review demo. It checks documents and lending rules, explains its recommendation and leaves the final decision with a credit officer.",
+    "role": "I defined the product, credit policy and requirements, then reviewed and tested the build. Claude wrote most of the code.",
+    "image": "cercit.jpg",
+    "alt": "CERCIT credit officer dashboard showing a synthetic application book and exception queue",
+    "links": [
+      {
+        "label": "Try the demo",
+        "url": "https://cercit.github.io/CERCIT_autoloan/"
+      },
+      {
+        "label": "View code and docs",
+        "url": "https://github.com/cercit/CERCIT_autoloan"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Focus",
+        "value": "Salaried new-car loans"
+      },
+      {
+        "label": "Decision owner",
+        "value": "Credit officer"
+      },
+      {
+        "label": "Demo data",
+        "value": "Synthetic customers"
+      },
+      {
+        "label": "My contribution",
+        "value": "Product and credit policy"
+      }
+    ],
+    "intro": "I have worked in vehicle finance since 2014. CERCIT applies that experience to a loan-review system: what information to collect, which rules to check and what an officer needs before deciding a case.",
+    "sections": [
+      {
+        "title": "The loan file",
+        "paragraphs": [
+          "A loan application brings together identity documents, income, credit history and vehicle details. When those disagree or something is missing, an officer needs to see the issue before making a decision.",
+          "I defined the first product around salaried new-car buyers. That gave the application a specific document list and a lending policy I could write and review."
+        ]
+      },
+      {
+        "title": "What I put on the review screen",
+        "paragraphs": [
+          "The system reads and checks documents, compares income sources and runs lending rules. The officer sees the recommendation beside the reasons, affordability calculations and any failed checks.",
+          "I kept the final decision with the officer. They can approve, decline or refer a case, and must record a reason. Missing income or bureau information also goes for review."
+        ]
+      },
+      {
+        "title": "How I directed the build",
+        "paragraphs": [
+          "I wrote the requirements and credit policy, set priorities and checked the resulting workflows. Claude handled most implementation, including the website, database and document services.",
+          "I also defined how rule changes should happen. A change is drafted, checked for its effect on cases and approved before it becomes active. The system keeps a record of who changed or overrode a decision."
+        ]
+      },
+      {
+        "title": "The current demo",
+        "paragraphs": [
+          "You can try the customer and staff journeys using synthetic cases. The public repository includes the requirements, architecture and test documentation.",
+          "The demo shows the workflow. To measure its effect on approval time or credit quality, the next step would be a lender pilot with agreed measures and representative cases."
+        ]
+      }
+    ],
+    "featured": true
+  },
+  {
+    "slug": "upi-recovery",
+    "title": "Wrong UPI payment recovery",
+    "category": "product",
+    "status": "Product concept",
+    "kicker": "Request recovery from the payment receipt",
+    "summary": "After a wrong UPI payment, the sender needs a clear way to act. I designed a recovery request on the receipt, a return flow for the recipient and a status tracker for the sender.",
+    "role": "I defined the problem, prioritised features and wrote the requirements and sprint plan. AI tools helped with research and the prototype.",
+    "image": "upi-receipt.png",
+    "alt": "Prototype payment receipt with an action to request recovery",
+    "links": [
+      {
+        "label": "Read the original study",
+        "url": "https://cercit.github.io/upi-wrong-payment-recovery/"
+      },
+      {
+        "label": "Try the prototype",
+        "url": "https://cercit.github.io/upi-wrong-payment-recovery/app/"
+      },
+      {
+        "label": "View project files",
+        "url": "https://github.com/cercit/upi-wrong-payment-recovery"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Starting point",
+        "value": "Payment receipt"
+      },
+      {
+        "label": "Delivery plan",
+        "value": "9 user stories"
+      },
+      {
+        "label": "Acceptance criteria",
+        "value": "48 documented"
+      },
+      {
+        "label": "Evidence",
+        "value": "Illustrative personas"
+      }
+    ],
+    "intro": "This is a product concept for someone who has sent money to the wrong UPI ID. I designed what happens after they notice the mistake: how the sender raises and tracks a request, and how the recipient responds.",
+    "sections": [
+      {
+        "title": "Start with the receipt",
+        "paragraphs": [
+          "I put the recovery action on the payment receipt because it already has the transaction details. Those details carry into a prefilled request, reducing what the sender has to type.",
+          "The sender receives a case ID and a timeline showing the status and next step."
+        ]
+      },
+      {
+        "title": "Give the recipient a way to respond",
+        "paragraphs": [
+          "The recipient can return the full amount, offer a partial return or say that the payment was intentional. I included these paths because a recovery request needs an answer at the other end.",
+          "A suspected scam follows a separate fraud route. The recovery flow also checks whether a payment is eligible before raising a request."
+        ]
+      },
+      {
+        "title": "Turn the screens into planned work",
+        "paragraphs": [
+          "I broke the chosen features into nine user stories and 48 acceptance criteria, with a proposed nine-week delivery plan.",
+          "A return payment could expose the sender's phone number through their UPI ID, so the plan uses a masked name. I also added a separate Help entry: an ineligible payment still needs a route to support when the recovery button is hidden."
+        ]
+      },
+      {
+        "title": "What you can review",
+        "paragraphs": [
+          "The public study contains the requirements, competitor comparison, clickable prototype and sprint plan. Personas and quotes are illustrative; this is an independent concept, with no PhonePe affiliation.",
+          "The prototype demonstrates the screens and choices. Bank integration, real-user interviews and a support-team review would be needed before it could process recovery requests."
+        ]
+      }
+    ],
+    "featured": true
+  },
+  {
+    "slug": "hiremate",
+    "title": "HireMate",
+    "category": "product",
+    "status": "Product concept",
+    "kicker": "Interview practice for bank and NBFC jobs",
+    "summary": "I designed a mock-interview concept for freshers and career switchers applying to banking roles. The work includes role-specific questions, a small survey, a clickable prototype and a pricing and launch plan.",
+    "role": "I chose the audience, designed the research and defined the product and launch plan. AI tools helped develop and check the material.",
+    "image": "hiremate.png",
+    "alt": "HireMate prototype for role-specific banking interview practice",
+    "links": [
+      {
+        "label": "Read the strategy",
+        "url": "https://cercit.github.io/hiremate-survey/"
+      },
+      {
+        "label": "Try the prototype",
+        "url": "https://cercit.github.io/hiremate-survey/demo/"
+      },
+      {
+        "label": "Read the launch plan",
+        "url": "https://cercit.github.io/hiremate-survey/HireMate-Launch-Strategy.pdf"
+      },
+      {
+        "label": "View project files",
+        "url": "https://github.com/cercit/hiremate-survey"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Real survey",
+        "value": "14 completed responses"
+      },
+      {
+        "label": "Target-role responses",
+        "value": "6 of 14"
+      },
+      {
+        "label": "Interview research",
+        "value": "AI-simulated personas"
+      },
+      {
+        "label": "Product stage",
+        "value": "Strategy and prototype"
+      }
+    ],
+    "intro": "HireMate focuses on interviews for collections, field sales, credit and data-analysis roles. I worked on the product strategy and prototype as part of my product-management programme.",
+    "sections": [
+      {
+        "title": "Make practice specific to the role",
+        "paragraphs": [
+          "I narrowed the audience to Indian freshers and early-career switchers seeking bank and NBFC jobs. The practice covers situations they could face in those roles, including customer handling.",
+          "The project has 48 scenarios, with weak answers and suggested corrections. The prototype shows how a candidate chooses a role, practises and receives feedback."
+        ]
+      },
+      {
+        "title": "What the research told me",
+        "paragraphs": [
+          "The survey collected 14 completed responses. Six came from people in the target roles, so the sample is too small to settle demand or pricing.",
+          "I also used 14 AI-simulated persona interviews to develop questions and hypotheses. I kept those separate from the real survey because simulated answers cannot establish what customers want."
+        ]
+      },
+      {
+        "title": "Check the strategy before using it",
+        "paragraphs": [
+          "I recorded prompts, decisions and corrections in a process log. Source checks caught six errors in AI-generated market research.",
+          "The final material includes the audience choice, proposed pricing, first product scope and launch plan. The 10,000-user figure is a launch target."
+        ]
+      },
+      {
+        "title": "The next research step",
+        "paragraphs": [
+          "The strategy, landing page and prototype are public. The product is at the concept stage.",
+          "The next useful test is with more candidates in the chosen roles: can they use the feedback to give a better second answer, and would they return for another session? That evidence would help decide what to build and charge for."
+        ]
+      }
+    ],
+    "featured": true
+  },
+  {
+    "slug": "dealerfinance",
+    "title": "DealerFinance / FinStack",
+    "category": "product",
+    "status": "In progress",
+    "kicker": "Dealer-assisted loan routing, still being built",
+    "summary": "Aditya and I are working on a dealer tool to compare lender fit and track loan files. I defined lending decisions and drew the journey. The wireframes are ready; a lot of implementation remains.",
+    "role": "I worked on lending rules, the customer journey, wireframes and handover. Aditya Sharan owns the PRD and sprint plan.",
+    "image": "",
+    "alt": "",
+    "links": [],
+    "facts": [
+      {
+        "label": "Stage",
+        "value": "Build in progress"
+      },
+      {
+        "label": "Primary user",
+        "value": "Dealer finance team"
+      },
+      {
+        "label": "Team",
+        "value": "Sameer and Aditya"
+      },
+      {
+        "label": "Current evidence",
+        "value": "Wireframes and decisions log"
+      }
+    ],
+    "intro": "DealerFinance is an ongoing team project with Aditya Sharan for the FinStack hackathon. We are designing a tool for dealer finance coordinators who need to choose a lender and follow a customer's loan file.",
+    "sections": [
+      {
+        "title": "The dealer's problem",
+        "paragraphs": [
+          "A dealer may work with several lenders. When one rejects a customer, the coordinator has to choose another, resend information and chase the status.",
+          "I mapped a proposed journey beginning with the car enquiry and consent. It checks lender fit, asks for required information and sends exceptions to a review queue."
+        ]
+      },
+      {
+        "title": "A ranking decision we changed",
+        "paragraphs": [
+          "An early version gave priority to lenders offering the dealer a trade advance. We changed that order to put customer fit, customer preference and EMI first.",
+          "Commission, lender speed and available trade advance remain visible as tags and tie-breakers. A coordinator choosing below the top fit must record why."
+        ]
+      },
+      {
+        "title": "The work so far",
+        "paragraphs": [
+          "I prepared the lending decisions, low-fidelity screens, wireflow and handover. The wireflow shows who owns each step, what information it needs and where a case can exit.",
+          "Aditya owns the PRD and sprint plan. These documents are our working handover for the platform build."
+        ]
+      },
+      {
+        "title": "What remains",
+        "paragraphs": [
+          "The project is unfinished. We still need to complete the core enquiry-to-send journey and test cases where consent is missing, credit data is unavailable or manual review is required.",
+          "The bureau-access arrangement also needs resolution before using real customer data. The completed platform build is not yet the evidence shown here."
+        ]
+      }
+    ],
+    "featured": false
+  },
+  {
+    "slug": "pagefit",
+    "title": "pagefit",
+    "category": "tools",
+    "status": "Local tool",
+    "kicker": "Reduce wasted space in generated PDFs",
+    "summary": "I worked on a PDF tool that checks the pages after rendering. It adjusts spacing within set limits, then keeps the change only if it reduces wasted space without shrinking the text too far.",
+    "role": "I defined the layout problem, readability limits and output checks. AI tools helped implement the tool.",
+    "image": "",
+    "alt": "",
+    "links": [
+      {
+        "label": "View the tool",
+        "url": "https://github.com/cercit/pagefit"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Inputs",
+        "value": "Markdown, Typst and web pages"
+      },
+      {
+        "label": "Runs",
+        "value": "Locally"
+      },
+      {
+        "label": "Feedback",
+        "value": "Page-fill report"
+      }
+    ],
+    "intro": "Generated PDFs often leave large gaps or push a small section onto another page. pagefit checks the result and tries another layout when there is room to improve it.",
+    "sections": [
+      {
+        "title": "Look at the finished pages",
+        "paragraphs": [
+          "The tool converts Markdown, Typst or a web page to PDF, then measures how much of each page's text area is used.",
+          "Headers and footers are excluded. Including a page number at the bottom would make an almost empty page look full."
+        ]
+      },
+      {
+        "title": "Stop before the text gets too small",
+        "paragraphs": [
+          "I set limits on type size and margins. The tool tries slightly tighter settings and keeps them only if page count or fill improves.",
+          "If it cannot absorb an awkward page within those limits, that page stays."
+        ]
+      },
+      {
+        "title": "The documented example",
+        "paragraphs": [
+          "The repository records a study document changing from 26 pages to 17, with mean page fill rising from 72% to 96%. That result belongs to that document.",
+          "The code and instructions are public. The tool runs locally and reports what the layout loop changed."
+        ]
+      },
+      {
+        "title": "Checking more document types",
+        "paragraphs": [
+          "Long tables, quotations and illustrated pages need different checks. A useful next test set would compare page count with the actual reading experience, including broken tables and stranded headings."
+        ]
+      }
+    ],
+    "featured": false
+  },
+  {
+    "slug": "samsmind",
+    "title": "SamsMind",
+    "category": "tools",
+    "status": "Local tool",
+    "kicker": "Capture notes, find them and ask questions",
+    "summary": "I designed a local system to save notes, file them into my own areas and find related ideas. Answers link back to source notes. Sharing uses a separate export of items I approve.",
+    "role": "I defined the note workflow, privacy rules and filing areas, then reviewed the implementation built with AI tools.",
+    "image": "",
+    "alt": "",
+    "links": [],
+    "facts": [
+      {
+        "label": "Workspace",
+        "value": "Local capture and search"
+      },
+      {
+        "label": "Answers",
+        "value": "Cite matching notes"
+      },
+      {
+        "label": "Public export",
+        "value": "Built, unpublished"
+      }
+    ],
+    "intro": "SamsMind brings capture, filing, search and questions into one local workflow. I defined how it should organise my notes and which material can be processed or shared.",
+    "sections": [
+      {
+        "title": "Use the areas I already have",
+        "paragraphs": [
+          "A saved note receives an ID and timestamp. The filing step chooses from my existing areas instead of creating new categories each time.",
+          "I can find a note through search or a map of connected notes. Both open the same saved material."
+        ]
+      },
+      {
+        "title": "Answer with the source attached",
+        "paragraphs": [
+          "The question feature cites the notes used in its answer. A notes-only setting tells it to say when the answer is missing.",
+          "If an answer includes general knowledge, that part is labelled separately so I can tell it apart from my saved notes."
+        ]
+      },
+      {
+        "title": "Decide where the data goes",
+        "paragraphs": [
+          "Personal notes use local processing. If that route is unavailable, they wait rather than being sent to a cloud model.",
+          "A public export includes only approved, shareable notes. The private collection and working files remain separate."
+        ]
+      },
+      {
+        "title": "Current state",
+        "paragraphs": [
+          "Capture, organisation, the map and questions are built locally. The public export is also built, but remains unpublished.",
+          "A public demonstration would use invented notes to show the workflow and its source citations."
+        ]
+      }
+    ],
+    "featured": false
+  },
+  {
+    "slug": "coins",
+    "title": "World of Coins",
+    "category": "personal",
+    "status": "Personal project",
+    "kicker": "Browse my collection by country and issuer",
+    "summary": "I organised my coin collection into an interactive catalogue. A map and flag grid lead to each country, then its issuers and coins. I also record when a specimen differs from the catalogue type.",
+    "role": "I curate the collection, define its organisation and correct specimen details. AI tools helped build the site and process images.",
+    "image": "coins.jpg",
+    "alt": "World of Coins catalogue with world-map navigation and curated exhibitions",
+    "links": [
+      {
+        "label": "Browse the collection",
+        "url": "https://cercit.github.io/coins/"
+      },
+      {
+        "label": "View code",
+        "url": "https://github.com/cercit/coins"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Navigation",
+        "value": "World map and flags"
+      },
+      {
+        "label": "Hierarchy",
+        "value": "Country, issuer, authority"
+      },
+      {
+        "label": "Data source",
+        "value": "Numista collection export"
+      }
+    ],
+    "intro": "World of Coins is my personal collection catalogue. I wanted the structure to retain who issued each coin, including dynasties and princely states that sit within a modern country.",
+    "sections": [
+      {
+        "title": "Country is only the first level",
+        "paragraphs": [
+          "The catalogue groups coins by country, issuer and ruling authority. India, for example, includes historical issues as well as the Republic.",
+          "The map and flag grid open the same view. Search helps reach countries that are hard to select on the map."
+        ]
+      },
+      {
+        "title": "Describe the piece I own",
+        "paragraphs": [
+          "A Numista entry describes a coin type. My specimen may be a restrike, replica or have a different composition.",
+          "I added specimen notes so those differences are visible. An unknown material stays unknown rather than inheriting a figure that belongs to the original type."
+        ]
+      },
+      {
+        "title": "Update the collection without rebuilding the layout",
+        "paragraphs": [
+          "The site builds its catalogue from a Numista export. An image-processing step crops coin photographs and removes backgrounds.",
+          "Checks compare the country write-ups against the collection records, including material claims and fixed counts."
+        ]
+      },
+      {
+        "title": "The collection work continues",
+        "paragraphs": [
+          "The catalogue is a working personal project. I continue adding images and specimen corrections as I catalogue the collection.",
+          "The code is public, with source credits for the catalogue data and photographs."
+        ]
+      }
+    ],
+    "featured": false
+  },
+  {
+    "slug": "wpl",
+    "title": "WPL data and analytics",
+    "category": "analytics",
+    "status": "Analytics project",
+    "kicker": "Join cricket performance with squad and auction data",
+    "summary": "I worked on a WPL dataset linking match performance, squads and auction records across seasons. The package includes analysis notebooks and a data dictionary explaining player identities, joins and missing values.",
+    "role": "I defined analysis questions and reviewed the dataset structure and source matching. AI tools helped with processing and notebook development.",
+    "image": "",
+    "alt": "",
+    "links": [
+      {
+        "label": "Ball-by-ball data source",
+        "url": "https://cricsheet.org/"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Documented scope",
+        "value": "2023–2026 seasons"
+      },
+      {
+        "label": "Data package",
+        "value": "8 tables and a dictionary"
+      },
+      {
+        "label": "Outputs",
+        "value": "Notebook and workbook"
+      },
+      {
+        "label": "Current stage",
+        "value": "Local dataset and analysis"
+      }
+    ],
+    "intro": "This project connects WPL scorecards with squad and auction data. The aim is to make questions about spending and performance possible using tables that can be joined consistently.",
+    "sections": [
+      {
+        "title": "Connect the records",
+        "paragraphs": [
+          "The local package has eight data tables and a dictionary. Match IDs connect deliveries and scorecards; season, team and player identifiers connect those records to squads.",
+          "The documented scope covers the 2023–2026 seasons. Processing scripts, a notebook and an insights workbook are saved locally."
+        ]
+      },
+      {
+        "title": "Match names across sources",
+        "paragraphs": [
+          "A player can appear under an abbreviated scorecard name and a full auction name. The dataset uses stable IDs where available and reviewed aliases for the other cases.",
+          "The Bangalore-to-Bengaluru team rename is normalised so the franchise stays together in comparisons."
+        ]
+      },
+      {
+        "title": "Explain the blanks",
+        "paragraphs": [
+          "An unsold player has no sale price. An unpublished fee is also blank, for a different reason. Those cases are documented instead of being filled with an invented average.",
+          "The documentation also explains squad members who did not play and describes checks reconciling runs and wickets with the match data."
+        ]
+      },
+      {
+        "title": "Presenting the analysis",
+        "paragraphs": [
+          "The current work is a local dataset and analysis package. A useful portfolio addition would be a short set of charts answering one question, with the joins and sample sizes beside the findings.",
+          "For example, squad spend can be compared with season points. The result still needs to account for the small number of teams and seasons."
+        ]
+      }
+    ],
+    "featured": false
+  }
+]

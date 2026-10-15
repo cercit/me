@@ -61,7 +61,7 @@
         ]
       },
       {
-        "title": "The current demo",
+        "title": "Try it with synthetic cases",
         "paragraphs": [
           "You can try the customer and staff journeys using synthetic cases. The public repository includes the requirements, architecture and test documentation.",
           "The demo shows the workflow. To measure its effect on approval time or credit quality, the next step would be a lender pilot with agreed measures and representative cases."
@@ -136,7 +136,7 @@
         ]
       },
       {
-        "title": "What you can review",
+        "title": "What is public to read and open",
         "paragraphs": [
           "The public study contains the requirements, competitor comparison, clickable prototype and sprint plan. Personas and quotes are illustrative; this is an independent concept, with no PhonePe affiliation.",
           "The prototype demonstrates the screens and choices. Bank integration, real-user interviews and a support-team review would be needed before it could process recovery requests."
@@ -215,7 +215,7 @@
         ]
       },
       {
-        "title": "The next research step",
+        "title": "What I would test next",
         "paragraphs": [
           "The strategy, landing page and prototype are public. The product is at the concept stage.",
           "The next useful test is with more candidates in the chosen roles: can they use the feedback to give a better second answer, and would they return for another session? That evidence would help decide what to build and charge for."
@@ -344,7 +344,7 @@
         ]
       },
       {
-        "title": "The collection work continues",
+        "title": "Still cataloguing",
         "paragraphs": [
           "The catalogue is a working personal project. I continue adding images and specimen corrections as I catalogue the collection.",
           "The code is public, with source credits for the catalogue data and photographs."
@@ -465,7 +465,7 @@
     "intro": "This repo holds the exercises I did for my product management course. They are practice pieces. I publish them so I can show how I think, and so I can look back at what I learned.",
     "sections": [
       {
-        "title": "What is in the repo",
+        "title": "The five published sessions",
         "paragraphs": [
           "Each published session has its own folder. Session 1, PM with AI, is a PM ecosystem infographic. Session 2, Day in the life, is an infographic on a product manager's day at Cars24.",
           "Session 3, Research methods, is a one-page research plan for Blinkit cart abandonment. Session 4, User interviews, is an AI research prompt tried on Xbox Game Pass. Session 11, GitHub Copilot, is a Snakes and Ladders game with a PRD."

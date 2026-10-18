@@ -1,0 +1,113 @@
+{
+  "name": "Sameer Shreenivas Mittimani",
+  "title": "Deputy Manager, Auto – National Retail Team",
+  "tagline": "Product Owner, Digital Initiatives (IJP)",
+  "contact_web": [
+    {"label": "Chennai"},
+    {"label": "samsm@outlook.in", "url": "mailto:samsm@outlook.in"},
+    {"label": "linkedin.com/in/sameersm", "url": "https://www.linkedin.com/in/sameersm"},
+    {"label": "samsm.vercel.app", "url": "https://samsm.vercel.app"}
+  ],
+  "contact_pdf_extra": ["+91 94488 00299"],
+  "summary": [
+    "Twelve years at Sundaram Finance. I joined as a Customer Support Executive, spent seven years running branch operations, and now sit in the National Retail Team at head office. So I have seen a loan from both sides: processing the application and chasing the repayment at branch, and now suggesting what the national team should see and when.",
+    "Today I work on Vahan market-share analysis, enquiry lifecycles and management reports in the National Retail Team, and take suggestions from that work to leadership. Before that I launched Bulk Diesel Finance in North Karnataka from zero and beat budget every quarter for two years. Since 2026 I have also been writing PRDs, designing data models and building AI products with coding agents. I want to do this full time in Digital Initiatives."
+  ],
+  "skills": [
+    {"label": "Product ownership", "text": "vision and roadmap, backlog and prioritisation, PRDs, 0-to-1 launch, metrics and KPIs, adoption and value tracking"},
+    {"label": "Business analysis", "text": "requirements gathering from leadership and field, process design, UAT-style checks against policy cases"},
+    {"label": "Agile", "text": "Jira sprint planning, backlog grooming"},
+    {"label": "Stakeholders and CX", "text": "leadership, regional sales, dealers, OEMs, branch teams, customer journey, wireframes (Figma)"},
+    {"label": "Domains", "text": "retail auto finance, OEM and segment data, loan lifecycle to NPA recovery, working capital"}
+  ],
+  "tools": "Excel, SQL, Power BI, Python (AI-assisted), Figma, Jira, Claude Code, Codex, AWS (Textract, Rekognition), Supabase, FinStack (no-code LOS)",
+  "experience_company": "Sundaram Finance Limited · 12 years",
+  "experience": [
+    {
+      "role": "Deputy Manager, Auto – National Retail Team",
+      "dates": "Apr 2024 – Present",
+      "place": "Chennai",
+      "intro": "The OEM market-share analysis I work on is built on Vahan vehicle-registration data and covers retail auto finance across India.",
+      "bullets": [
+        "Gathered requirements from leadership and regional heads and suggested what the analysis should show, how often and at what level of detail. Helped take it from idea to a national pack covering 36 states and union territories. It flags market-share shifts by OEM and segment before they show up in branch reporting.",
+        "Helped build Power BI and Excel reports on field productivity that show managers what is happening during the month, in place of monthly reports that only showed the damage afterwards.",
+        "Used LLM coding agents to rebuild the data pipeline: registration data, a cleaned dataset and automated region-level packs. Turnaround came down from days to hours, manual processing dropped 20–25%, and other teams now use the same workflow.",
+        "Work every day with leadership, regional sales, dealers and OEM partners, and visit branches often, because the gap between reported numbers and what happens on the ground changes the decisions I support."
+      ]
+    },
+    {
+      "role": "Deputy Manager, Working Capital Finance – North Karnataka",
+      "dates": "Apr 2022 – Mar 2024",
+      "place": "Bellary",
+      "bullets": [
+        "Launched Bulk Diesel Finance for fleet operators, a segment the region had never sold to. Handled segmentation, input on scheme design, onboarding of oil company partners and the regional rollout.",
+        "Beat budget every quarter for two years and grew B2B disbursement to INR 10–11 crore a month.",
+        "Branch staff did not know who the product was for, so I ran hands-on training and joint sales visits, and tracked the pipeline every week to catch stalled deals before month-end."
+      ]
+    },
+    {
+      "role": "Branch Accountant (promoted from Cashier, 2017)",
+      "dates": "Aug 2015 – Mar 2022",
+      "place": "Bijapur",
+      "bullets": [
+        "Seven years inside the loan lifecycle: payables and receivables, loan movement monitoring, NPA tracking, GECL restructuring for idle-vehicle borrowers, repossession and regulatory notices. This is where I learnt how a loan management system is used day to day, and where it gets in the way.",
+        "Moved cash-paying borrowers to digital repayment, from 20% to 60–70%, through customer education camps.",
+        "Designed a process for KYC and field checks over video calls during the COVID-19 lockdowns, so new lending kept running while branches were shut."
+      ]
+    },
+    {
+      "role": "Customer Support Executive",
+      "dates": "Aug 2014 – Aug 2015",
+      "place": "Shahpur",
+      "intro": "Credit assessment and loan processing from application to disbursement. Worked with compliance and internal audit on documentation standards.",
+      "bullets": []
+    }
+  ],
+  "education": [
+    {"what": "Certification, Product Management with Applied AI", "where": "iHUB DivyaSampark, IIT Roorkee", "when": "May 2026 – Jan 2027 (ongoing)"},
+    {"what": "Master of Business Administration (MBA), Finance", "where": "KLE's Institute of Management Studies and Research, Hubli", "when": "2012 – 2014, First Class"},
+    {"what": "Bachelor of Commerce (B.Com)", "where": "Karnataka Arts and Commerce College, Dharwad", "when": "2009 – 2012, First Class with Distinction"}
+  ],
+  "portfolio": [
+    {
+      "name": "cercit, AI credit appraisal for salaried car loans",
+      "meta": "2026 – present",
+      "url": "https://cercit.github.io/CERCIT_autoloan",
+      "bullets": [
+        "Took it from an idea to a working prototype on synthetic data, as the PM. Wrote the PRD, defined the persona (a credit officer reviewing 25–40 files a day who needs reasons, not a black box), designed the data model and policy rules, and built it with Claude Code.",
+        "Customer side on mobile (apply, upload documents, track status) and a staff review side. Document AI reads KYC and income papers (AWS Textract), runs a face match (Rekognition) and masks Aadhaar numbers before storage.",
+        "Rule changes need two people: a Head proposes and an Admin approves. Every change is logged and can be undone.",
+        "Ran a champion/challenger test of two XGBoost risk models on about 17,000 synthetic records. Shipped the challenger even though its AUC was lower (0.741 vs 0.754), because it was better calibrated (Brier 0.0146 vs 0.0155), and a lending decision depends on calibration.",
+        "Tested every release with 40 policy cases and 28 automated browser tests."
+      ]
+    },
+    {
+      "name": "DealerFinance, car-loan journey for showrooms",
+      "meta": "FinStack hackathon, Oct 2026",
+      "url": "https://cercit.github.io/finstack/",
+      "bullets": [
+        "With one teammate, built a car-loan journey for Kia showrooms on FinStack's no-code platform: enquiry, KYC with consent, customer details, lender routing, approval and settlement. Demoed it end to end to the FinStack team on 13 Oct.",
+        "Wrote the PRD, sprint plan and launch plan, and published the full record with personal data removed. Fixing two cases found in testing: buyers with no credit history, and purchases without a vehicle exchange."
+      ]
+    },
+    {
+      "name": "UPI Recover, wrong-UPI payment recovery (workshop concept built on PhonePe's app)",
+      "meta": "Oct 2026",
+      "url": "https://github.com/cercit/upi-wrong-payment-recovery",
+      "bullets": [
+        "Turned the PRD into 9 user stories with acceptance criteria, sized them myself, and planned 4 two-week sprints and a pilot week. Set it up in Jira (2 epics, 48 tasks, 5 sprints) and Trello."
+      ]
+    },
+    {
+      "name": "SamsMind, personal knowledge assistant",
+      "meta": "2026",
+      "url": "https://cercit.github.io/samsmind",
+      "bullets": [
+        "A notes app that answers questions with citations to the source notes. Personal notes are processed only by a model on the device. 47 approved notes are public as a searchable map."
+      ]
+    }
+  ],
+  "certifications": "Google AI Fundamentals (Google / Coursera, 2026) · SQL Intermediate (HackerRank, 2023) · Foundations of Data Science (Google, 2023) · Introduction to Python (365 Data Science, 2023)",
+  "languages": "Kannada (native), English (professional working), Hindi (professional working)",
+  "hobbies": "Coin collecting, gaming"
+}

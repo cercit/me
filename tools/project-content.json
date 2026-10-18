@@ -72,6 +72,23 @@
     "featured": true
   },
   {
+    "slug": "finstack",
+    "title": "FinStack cohort: DealerFinance",
+    "category": "product",
+    "status": "Cohort project",
+    "kicker": "A loan journey for new-car buyers",
+    "summary": "In a five-day fintech product cohort I planned, built and live-tested a dealer loan journey on a no-code lending platform, then fixed what broke.",
+    "role": "",
+    "image": "finstack.jpg",
+    "alt": "DealerFinance loan journey, step 3: price, on-road cost, loan value and exchange value, with invented test values",
+    "external": "https://cercit.github.io/finstack/",
+    "links": [],
+    "facts": [],
+    "intro": "",
+    "sections": [],
+    "featured": false
+  },
+  {
     "slug": "upi-recovery",
     "title": "Wrong UPI payment recovery",
     "category": "product",

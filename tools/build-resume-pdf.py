@@ -13,7 +13,7 @@ def ul(items): return '<ul>'+''.join(f'<li>{e(b)}</li>' for b in items)+'</ul>' 
 def h(t): return f'<h2>{e(t)}</h2>'
 def link(c): return f'<a href="{e(c["url"])}">{e(c["label"])}</a>' if c.get('url') else e(c['label'])
 contact = ' | '.join([link(c) for c in R['contact_web'][:1]] + [e(x) for x in R['contact_pdf_extra']] + [link(c) for c in R['contact_web'][1:]])
-body = f'<h1>{e(R["name"])}</h1><p class="sub">{e(R["title"])} | {e(R["tagline"])}</p><p class="ct">{contact}</p>'
+body = f'<h1>{e(R["name"])}</h1><p class="sub">{e(R["title"])}{(' | '+e(R["tagline"])) if R['tagline'] else ''}</p><p class="ct">{contact}</p>'
 body += h('Summary')+''.join(f'<p>{e(x)}</p>' for x in R['summary'])
 body += h('Skills')+''.join(f'<p class="k"><b>{e(x["label"])}:</b> {e(x["text"])}</p>' for x in R['skills'])
 body += h('Tools')+f'<p>{e(R["tools"])}</p>'

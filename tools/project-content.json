@@ -517,6 +517,24 @@
     "featured": false
   },
   {
+    "slug": "iitr",
+    "title": "Learning PM in public",
+    "category": "product",
+    "status": "Live site",
+    "kicker": "My IIT Roorkee × Masai course, class by class",
+    "summary": "A roadmap for my Product Management with Applied AI course: a short readable note for each class, the assignments I've finished and the projects they turned into.",
+    "role": "",
+    "image": "iitr.jpg",
+    "image_dark": "iitr-dark.jpg",
+    "alt": "Course tracker home page: Learning product management, in public, with the module timeline",
+    "external": "https://cercit.github.io/IITR/",
+    "links": [],
+    "facts": [],
+    "intro": "",
+    "sections": [],
+    "featured": false
+  },
+  {
     "slug": "pm-portfolio",
     "title": "PM Portfolio",
     "category": "product",
@@ -528,7 +546,11 @@
     "alt": "",
     "links": [
       {
-        "label": "PM Portfolio on GitHub",
+        "label": "Open the portfolio",
+        "url": "https://cercit.github.io/PM-Portfolio/"
+      },
+      {
+        "label": "View on GitHub",
         "url": "https://github.com/cercit/PM-Portfolio"
       }
     ],

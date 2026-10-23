@@ -156,3 +156,7 @@ main .about-image img:hover,main .about-image img.img-reveal{filter:none}
 main .visual-finstack img{filter:none}
 [data-theme=dark] main .visual-finstack img{filter:brightness(.8) contrast(1.04)}
 [data-theme=dark] main .visual-finstack img:hover,[data-theme=dark] main .visual-finstack img.img-reveal{filter:none}
+
+/* Course tracker screenshot keeps its own colours, like the other site screenshots */
+main .visual-iitr img,[data-theme=dark] main .visual-iitr img{filter:none}
+.education .text-link{margin-top:18px}

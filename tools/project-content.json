@@ -89,6 +89,23 @@
     "featured": false
   },
   {
+    "slug": "ownly-together",
+    "title": "Ownly Together",
+    "category": "product",
+    "status": "Live prototype",
+    "kicker": "Group food ordering for Ownly's Chennai launch",
+    "summary": "A group-ordering concept for Rapido's zero-commission food app. One link brings the group in, each person pays only their share, and the bill splits to the paisa. I took it from research plan to a live, tested prototype.",
+    "role": "",
+    "image": "ownly-together.jpg",
+    "alt": "Ownly Together case study: order together, pay your share, no more chasing, with the live prototype's order confirmation and map",
+    "external": "https://cercit.github.io/ownly-together/",
+    "links": [],
+    "facts": [],
+    "intro": "",
+    "sections": [],
+    "featured": true
+  },
+  {
     "slug": "upi-recovery",
     "title": "Wrong UPI payment recovery",
     "category": "product",

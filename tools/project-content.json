@@ -557,18 +557,18 @@
     "category": "product",
     "status": "Coursework",
     "kicker": "Course deliverables from my product management programme",
-    "summary": "These are the practice deliverables from my product management course. Five sessions are published so far: two infographics, a research plan, an interview prompt and a small game with a PRD.",
+    "summary": "These are the practice deliverables from my product management course. Five classes are published so far: two infographics, a research plan, an interview prompt and a small game with a PRD. They now sit on my course site, next to each class's notes.",
     "role": "I did each exercise and wrote it up. These are course deliverables from the Masai x iHUB DivyaSampark IIT Roorkee programme. They are not products I shipped or work from my job.",
     "image": "",
     "alt": "",
     "links": [
       {
-        "label": "Open the portfolio",
-        "url": "https://cercit.github.io/PM-Portfolio/"
+        "label": "See the class work",
+        "url": "https://cercit.github.io/IITR/roadmap.html"
       },
       {
         "label": "View on GitHub",
-        "url": "https://github.com/cercit/PM-Portfolio"
+        "url": "https://github.com/cercit/IITR"
       }
     ],
     "facts": [
@@ -582,20 +582,20 @@
       },
       {
         "label": "Published",
-        "value": "5 sessions"
+        "value": "5 classes"
       },
       {
         "label": "Nature",
         "value": "Course deliverables"
       }
     ],
-    "intro": "This repo holds the exercises I did for my product management course. They are practice pieces. I publish them so I can show how I think, and so I can look back at what I learned.",
+    "intro": "These are the exercises I did for my product management course. They are practice pieces. They now live on my course site, on the page for each class, so the notes and what I made are in one place.",
     "sections": [
       {
-        "title": "The five published sessions",
+        "title": "The five published classes",
         "paragraphs": [
-          "Each published session has its own folder. Session 1, PM with AI, is a PM ecosystem infographic. Session 2, Day in the life, is an infographic on a product manager's day at Cars24.",
-          "Session 3, Research methods, is a one-page research plan for Blinkit cart abandonment. Session 4, User interviews, is an AI research prompt tried on Xbox Game Pass. Session 11, GitHub Copilot, is a Snakes and Ladders game with a PRD."
+          "Each class has its own page with my notes and what I made. Class 01, PM with AI, is a PM ecosystem infographic. Class 02, Day in the life, is an infographic on a product manager's day at Cars24.",
+          "Class 03, Research methods, is a one-page research plan for Blinkit cart abandonment. Class 04, User interviews, is an AI research prompt tried on Xbox Game Pass. Class 27, GitHub Copilot, is a Snakes and Ladders game with a PRD."
         ]
       },
       {

@@ -62,7 +62,7 @@ def visual(p, prefix='', mode=''):
 
 def tile(p, art):
     href = p.get('external') or f"projects/{p['slug']}.html"
-    return f'''<article class="tile"><a class="tile-link" href="{href}"><div class="tile-art"><img src="assets/tiles/tile-{art}.jpg" alt="" loading="lazy" width="900" height="900"></div><p class="tile-meta">{e(p['status'])}</p><h3>{e(p['title'])} <span aria-hidden="true">↗</span></h3><p class="tile-text">{e(p['kicker'])}</p></a></article>'''
+    return f'''<article class="tile"><a class="tile-link" href="{href}"><div class="tile-art"><img src="assets/tiles/tile-{art}.jpg" alt="" loading="lazy" width="900" height="900"></div><p class="tile-meta">{e(p['status'])}</p><h3>{e(p['title'])} <span aria-hidden="true">↗</span></h3><p class="tile-text">{e(p.get('tile_text') or p['summary'])}</p></a></article>'''
 
 def card(p, number='', feature=False):
     href = p.get('external') or f"projects/{p['slug']}.html"

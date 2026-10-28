@@ -69,7 +69,8 @@
         ]
       }
     ],
-    "featured": true
+    "featured": true,
+    "tile_text": "I turned my vehicle-finance experience into a working loan-review demo. It checks documents and lending rules, explains why, and leaves the final call with a credit officer."
   },
   {
     "slug": "finstack",
@@ -86,7 +87,8 @@
     "facts": [],
     "intro": "",
     "sections": [],
-    "featured": false
+    "featured": false,
+    "tile_text": "In a five-day fintech cohort I planned, built and live-tested a dealer loan journey on a no-code lending platform. At the demo two cases hit dead ends, so I fixed both."
   },
   {
     "slug": "ownly-together",
@@ -103,7 +105,8 @@
     "facts": [],
     "intro": "",
     "sections": [],
-    "featured": true
+    "featured": true,
+    "tile_text": "A group-ordering concept for Rapido's zero-commission food app. One link brings the group in, each person pays only their share, and I took it to a live, tested prototype."
   },
   {
     "slug": "upi-recovery",
@@ -178,7 +181,8 @@
         ]
       }
     ],
-    "featured": true
+    "featured": true,
+    "tile_text": "After a wrong UPI payment, the sender needs a clear way to act. I designed a recovery request on the receipt, a return flow for the recipient and a status tracker."
   },
   {
     "slug": "hiremate",
@@ -258,7 +262,8 @@
         ]
       }
     ],
-    "featured": true
+    "featured": true,
+    "tile_text": "A mock-interview concept for freshers and career switchers going into banking jobs. I made role-specific questions, a small survey, a clickable prototype and a launch plan."
   },
   {
     "slug": "pagefit",
@@ -456,7 +461,8 @@
         ]
       }
     ],
-    "featured": false
+    "featured": false,
+    "tile_text": "My coin collection as an interactive catalogue. A map and flag grid lead to each country, then its issuers and coins, with notes where my coin differs from the catalogue."
   },
   {
     "slug": "wpl",

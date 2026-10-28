@@ -160,3 +160,21 @@ main .visual-finstack img{filter:none}
 /* Course tracker screenshot keeps its own colours, like the other site screenshots */
 main .visual-iitr img,[data-theme=dark] main .visual-iitr img{filter:none}
 .education .text-link{margin-top:18px}
+
+/* Home: six illustrated tiles, 3 across on a laptop, 2 on a tablet, 1 on a phone */
+.tile-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px;margin-top:8px}
+.tile-link{display:block;color:inherit;text-decoration:none}
+.tile-art{aspect-ratio:1;overflow:hidden;border-radius:6px;background:var(--soft)}
+.tile-art img{width:100%;height:100%;object-fit:cover;display:block}
+main .tile img,[data-theme=dark] main .tile img,main .tile img:hover,[data-theme=dark] main .tile img:hover{filter:none}
+.tile-meta{margin:18px 0 0;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--green)}
+.tile h3{margin:8px 0 0;font-size:24px;line-height:1.25;letter-spacing:-.02em}
+.tile h3 span{font-size:18px;color:var(--muted)}
+.tile-text{margin:8px 0 0;font-size:17px;line-height:1.5;color:var(--muted)}
+.tile-link:focus-visible .tile-art{outline:3px solid var(--green);outline-offset:4px}
+@media (prefers-reduced-motion:no-preference){
+  .tile-art img{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+  .tile-link:hover .tile-art img{transform:scale(1.04)}
+}
+@media(max-width:900px){.tile-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 22px}}
+@media(max-width:600px){.tile-grid{grid-template-columns:1fr;gap:36px}}

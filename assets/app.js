@@ -379,6 +379,7 @@
     if (!window.matchMedia('(hover: none)').matches) return;
     let shown = null;
     document.querySelectorAll('main img').forEach((img) => {
+      if (img.closest('.tile')) return; // tiles open their project on the first tap
       img.addEventListener('click', (event) => {
         // First tap shows the picture; a second tap follows any link around it
         if (img !== shown && img.closest('a')) event.preventDefault();

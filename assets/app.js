@@ -338,7 +338,8 @@
     if (!motionOk || !('IntersectionObserver' in window)) return;
 
     const targets = [...document.querySelectorAll([
-      '.selected-work .section-heading', '.selected-work .project-card',
+      '.selected-work .section-heading', '.selected-work .project-card', '.tile-grid .tile',
+      '.ai-section .section-heading', '.ai-grid article',
       '.about-preview', '.career-section .section-heading', '.career-grid article',
       '.about-section', '.approach-section', '.offscreen', '.education',
       '.work-grid .project-card', '.case-facts', '.case-section', '.next-project',

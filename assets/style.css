@@ -178,3 +178,5 @@ main .tile img,[data-theme=dark] main .tile img,main .tile img:hover,[data-theme
 }
 @media(max-width:900px){.tile-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 22px}}
 @media(max-width:600px){.tile-grid{grid-template-columns:1fr;gap:36px}}
+
+.ai-section{padding-block:70px;border-top:1px solid var(--line)}.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px}.ai-grid article{padding:28px 0 32px;border-top:1px solid var(--line);display:flex;flex-direction:column}.ai-grid h3{font-size:25px;line-height:1.3}.ai-grid article>p:not(.career-date){font-size:18px;line-height:1.7;color:var(--muted);margin:16px 0 20px;flex:1}@media(max-width:900px){.ai-grid{gap:0 24px}}@media(max-width:640px){.ai-section{padding-block:50px}.ai-grid{grid-template-columns:1fr}.ai-grid article>p:not(.career-date){font-size:17px}}

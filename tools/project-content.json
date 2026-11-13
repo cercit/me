@@ -110,6 +110,25 @@
     "tile_text": "A group-ordering concept for Rapido's zero-commission food app. One link brings the group in, each person pays only their share, and I took it to a live, tested prototype."
   },
   {
+    "slug": "gtavi",
+    "title": "9 Rockstar products",
+    "category": "product",
+    "status": "Live series",
+    "kicker": "A 9-day product breakdown before GTA VI's launch",
+    "summary": "A countdown to GTA VI: one Rockstar product a day, broken down the way a product manager would, from GTA V and GTA Online to Shark Cards and GTA+. Each day has its own design and one PM concept, from the BCG matrix to churn.",
+    "role": "",
+    "image": "gtavi.jpg",
+    "alt": "9 Rockstar products: the series home page, with the GTA VI artwork and the countdown to launch",
+    "external": "https://cercit.github.io/GTAVI/",
+    "links": [],
+    "facts": [],
+    "intro": "",
+    "sections": [],
+    "featured": true,
+    "tile_title": "9 Rockstar products",
+    "tile_text": "A countdown to GTA VI: one Rockstar product a day, broken down as a product manager would, each with its own design and one PM concept."
+  },
+  {
     "slug": "upi-recovery",
     "title": "Wrong UPI payment recovery",
     "category": "product",
